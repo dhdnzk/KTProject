@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=Windows-31J"
-		 pageEncoding="Windows-31J"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=utf-8"
+		 pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=Windows-31J">
-	<title>エラー画面</title>
+	<title>繧ｨ繝ｩ繝ｼ逕ｻ髱｢</title>
 	<style>.main_container {
 		width: 600px;
 		height: 300px;

@@ -1,0 +1,8 @@
+package dao.support;
+
+public enum EmployeeSearchMode {
+    SEARCH_CODE,
+    SEARCH_KANJI,
+    SEARCH_NAME,
+    SEARCH_SECTION
+}

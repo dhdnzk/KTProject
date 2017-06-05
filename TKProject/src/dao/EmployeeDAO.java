@@ -1,6 +1,5 @@
 package dao;
 
-import dao.support.EmployeeSearchMode;
 import exception.DeleteFailedException;
 
 import java.sql.*;
@@ -12,8 +11,38 @@ import ConnectionManager.*;
 // TODO : Add comment
 class EmployeeDAO {
 
-    // TODO : Add commentint
+/*    // TODO : Add commentint
     List<EmployeeBean> employeeSearchByString(EmployeeSearchMode mode, String search) throws Exception {
+
+        String sql = "SELECT * FROM m_employee JOIN m_section ON m_employee.section_code = m_section.section_code WHERE ";
+
+        switch(mode) {
+            case SEARCH_CODE:
+                sql += "emp_code";
+                break;
+
+            case SEARCH_KANJI:
+                sql += "CONCAT(l_name, f_name)";
+                break;
+
+            case SEARCH_NAME:
+                sql += "CONCAT(l_kana_name, f_kana_name)";
+                break;
+
+            case SEARCH_SECTION:
+                sql += "section_name";
+                break;
+
+            default:
+                throw new Exception();
+        }*/
+
+    static final public int SEARCH_CODE = 1;
+    static final public int SEARCH_KANJI = 2;
+    static final public int SEARCH_NAME = 3;
+    static final public int SEARCH_SECTION = 4;
+    // TODO : Add commentint
+    List<EmployeeBean> employeeSearchByString(int mode, String search) throws Exception {
 
         String sql = "SELECT * FROM m_employee JOIN m_section ON m_employee.section_code = m_section.section_code WHERE ";
 

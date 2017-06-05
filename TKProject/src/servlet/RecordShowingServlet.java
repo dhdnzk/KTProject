@@ -19,10 +19,28 @@ import java.io.IOException;
 public class RecordShowingServlet extends HttpServlet {
 
 	// TODO : Add comment
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		showAllEmployees(request, response);
+
+	}
+
+	// TODO : Add comment
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		try {
+			if (request.getParameter("search_mode") == null) {
+				System.out.println("null");
+			} else if(request.getParameter("search_mode").equals("")) {
+				System.out.println("\"\"");
+			} else {
+				System.out.println("nothing");
+			}
+		} catch(NullPointerException e) {
+			e.printStackTrace();
+		}
 
 	}
 

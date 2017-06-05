@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+         pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +59,7 @@
                 </td>
                 <td>
                     <div class="container_button2">
-                    <form action="recordShowingServlet" method="post">
+                    <form action="recordShowingServlet" method="get">
                             <input type="submit" name="button"
                                    value="showAllList">
                     </form>

@@ -1,6 +1,8 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="dao.EmployeeBean"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=utf-8"
+         pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC>
 <html>
 <head>
     <title></title>
@@ -28,6 +30,17 @@
     </style>
 </head>
 <body>
+<form action="/recordShowingServlet" method="post">
+    <select name="search_mode">
+        <option value="code">従業員コード</option>
+        <option value="name">氏名</option>
+        <option value="hurigana">フリガナ</option>
+        <option value="section">所属</option>
+    </select>
+    <input type="search" name="search" />
+    <input id="small-button" class="context" type="submit" value="検索" />
+</form>
+
 <div class="main_container">
 <%
     ArrayList<EmployeeBean> list = (ArrayList<EmployeeBean>) session.getAttribute("list");
