@@ -3,10 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="/css/main_container.css" />
 	<meta http-equiv="Content-Type" content="text/html; charset=Windows-31J">
 	<title>エラー画面</title>
-	<style>
+	<style>.main_container {
+		width: 600px;
+		height: 300px;
+		padding: 2%;
+		border: 1px ridge black;
+		margin: 10% auto 0 auto;
+		text-align: center;
+	}
 
 
 
