@@ -16,15 +16,23 @@ import java.io.IOException;
  */
 @WebServlet(name = "menuServlet", urlPatterns = "/menu")
 public class menuServlet extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
 
         try {
+
             session.getAttribute("id");
+
             request.getRequestDispatcher(Path.BASE_VIEW + "menu.jsp").forward(request, response);
+
         } catch(NullPointerException e) {
+
             request.getRequestDispatcher(Path.BASE_VIEW + "login.jsp").forward(request, response);
+
         }
+
     }
+
 }
