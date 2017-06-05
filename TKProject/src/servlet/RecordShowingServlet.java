@@ -1,7 +1,7 @@
 package servlet;
 
 import dao.DAOManager;
-import directory.Directories;
+import filePath.Path;
 import servlet.servlet.noticeSupport.NoticeGenerator;
 
 import javax.servlet.ServletException;
@@ -53,7 +53,7 @@ public class RecordShowingServlet extends HttpServlet {
 
 		}
 
-		request.getRequestDispatcher(Directories.BASE_VIEW + nextPageUrl).forward(request, response);
+		request.getRequestDispatcher(Path.BASE_VIEW + nextPageUrl).forward(request, response);
 
 	}
 

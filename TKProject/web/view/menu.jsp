@@ -6,14 +6,13 @@
     <title>Title</title>
     <style type="text/css">
 
-
-        div.container_title {
+        .container_title {
             font-size: 40px;
             margin-left: 38%;
             margin-top: 10%
         }
 
-        div.container_buttons {
+        .container_buttons {
 
             margin-left: 30%;
             margin-right: 30%;
@@ -21,11 +20,11 @@
 
         }
 
-        div.container_button2 {
+        .container_button2 {
             margin-left: 60%;
         }
 
-        div.container_submit_button {
+        .container_submit_button {
 
             margin-top: 8%;
             margin-left: 67%;

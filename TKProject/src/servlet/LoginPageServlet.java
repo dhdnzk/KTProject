@@ -1,6 +1,6 @@
 package servlet;
 
-import directory.Directories;
+import filePath.Path;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +17,7 @@ import java.io.IOException;
 public class LoginPageServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher(Directories.BASE_VIEW + "login.jsp").forward(request, response);
+        request.getRequestDispatcher(Path.BASE_VIEW + "login.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

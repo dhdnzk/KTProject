@@ -1,7 +1,7 @@
 package servlet;
 
 import dao.DAOManager;
-import directory.Directories;
+import filePath.Path;
 import servlet.servlet.noticeSupport.NoticeGenerator;
 
 import javax.servlet.ServletException;
@@ -23,6 +23,14 @@ import java.io.IOException;
 @WebServlet(name = "loginManagementServlet", urlPatterns =
         "/loginManagementServlet")
 public class LoginManagementServlet extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse
+            response) throws ServletException, IOException {
+
+        doPost(request, response);
+
+    }
 
     // TODO : Add comment
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -58,7 +66,7 @@ public class LoginManagementServlet extends HttpServlet {
 
             request.getSession().setAttribute("id", id);
 
-            request.getRequestDispatcher(Directories.BASE_VIEW + "menu.jsp").forward(request, response);
+            request.getRequestDispatcher(Path.BASE_VIEW + "menu.jsp").forward(request, response);
 
         } catch (Exception e) {
 
@@ -69,7 +77,7 @@ public class LoginManagementServlet extends HttpServlet {
                                 "/",
                                 "login page");
 
-            request.getRequestDispatcher(Directories.BASE_VIEW + "error.jsp").forward(request, response);
+            request.getRequestDispatcher(Path.BASE_VIEW + "error.jsp").forward(request, response);
 
         }
 
@@ -86,7 +94,7 @@ public class LoginManagementServlet extends HttpServlet {
                                 "/",
                                 "login page");
 
-            request.getRequestDispatcher(Directories.BASE_VIEW + "success.jsp").forward(request, response);
+            request.getRequestDispatcher(Path.BASE_VIEW + "success.jsp").forward(request, response);
     }
 
 }

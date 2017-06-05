@@ -1,6 +1,6 @@
 package servlet;
 
-import directory.Directories;
+import filePath.Path;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,9 +22,9 @@ public class menuServlet extends HttpServlet {
 
         try {
             session.getAttribute("id");
-            request.getRequestDispatcher(Directories.BASE_VIEW + "menu.jsp").forward(request, response);
+            request.getRequestDispatcher(Path.BASE_VIEW + "menu.jsp").forward(request, response);
         } catch(NullPointerException e) {
-            request.getRequestDispatcher(Directories.BASE_VIEW + "login.jsp").forward(request, response);
+            request.getRequestDispatcher(Path.BASE_VIEW + "login.jsp").forward(request, response);
         }
     }
 }

@@ -1,7 +1,7 @@
 package servlet;
 
 import dao.DAOManager;
-import directory.Directories;
+import filePath.Path;
 import exception.DeleteFailedException;
 import servlet.servlet.noticeSupport.NoticeGenerator;
 
@@ -35,7 +35,7 @@ public class RecordDeletionServlet extends HttpServlet {
 								"/recordShowingServlet",
 								"return");
 
-			rd = request.getRequestDispatcher(Directories.BASE_VIEW + "success.jsp");
+			rd = request.getRequestDispatcher(Path.BASE_VIEW + "success.jsp");
 
 		}catch(DeleteFailedException e) {
 
@@ -44,7 +44,7 @@ public class RecordDeletionServlet extends HttpServlet {
 								"/recordShowingServlet",
 								"return");
 
-			rd = request.getRequestDispatcher(Directories.BASE_VIEW + "error.jsp");
+			rd = request.getRequestDispatcher(Path.BASE_VIEW + "error.jsp");
 
 		} catch (Exception e) {
 

@@ -2,6 +2,7 @@ package servlet;
 
 import dao.DAOManager;
 import dao.EmployeeBean;
+import filePath.Path;
 import servlet.servlet.noticeSupport.NoticeGenerator;
 
 import javax.servlet.ServletException;
@@ -75,7 +76,7 @@ public class RecordInsertingServlet extends HttpServlet {
 								"/recordShowingServlet",
 								"return");
 
-			request.getRequestDispatcher(directory.Directories.BASE_VIEW + "success.jsp").forward(request, response);
+			request.getRequestDispatcher(Path.BASE_VIEW + "success.jsp").forward(request, response);
 
 		} catch(Exception e){
 
@@ -84,7 +85,7 @@ public class RecordInsertingServlet extends HttpServlet {
 								"/menu",
 								"return");
 
-			request.getRequestDispatcher(directory.Directories.BASE_VIEW + "error.jsp").forward(request, response);
+			request.getRequestDispatcher(Path.BASE_VIEW + "error.jsp").forward(request, response);
 
 		}
 
@@ -111,7 +112,7 @@ public class RecordInsertingServlet extends HttpServlet {
 
 		request.getSession().setAttribute("departmentList", departmentList );
 
-		request.getRequestDispatcher(directory.Directories.BASE_VIEW + "registration.jsp").forward(request, response);
+		request.getRequestDispatcher(Path.BASE_VIEW + "registration.jsp").forward(request, response);
 
 	}
 
@@ -119,7 +120,7 @@ public class RecordInsertingServlet extends HttpServlet {
 
 			response) throws ServletException, IOException {
 
-		request.getRequestDispatcher(directory.Directories.BASE_VIEW + "menu.jsp").forward(request, response);
+		request.getRequestDispatcher(Path.BASE_VIEW + "menu.jsp").forward(request, response);
 
 
 	}
