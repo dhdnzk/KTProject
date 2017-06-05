@@ -71,9 +71,10 @@
     </table>
 
     <div class = "sub1">
-        </form>
         <input type = submit value = "delete">
-        <form action = "menu.jsp" method = "POST">
+        </form>
+
+        <form action = "menu" method = "POST">
             <input type = "submit" value = "back to main page"></form>
     </div>
 </div>

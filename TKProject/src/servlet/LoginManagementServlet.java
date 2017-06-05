@@ -1,6 +1,8 @@
 package servlet;
 
 import dao.DAOManager;
+import directory.Directories;
+import servlet.servlet.noticeSupport.NoticeGenerator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -56,16 +58,18 @@ public class LoginManagementServlet extends HttpServlet {
 
             request.getSession().setAttribute("id", id);
 
-            request.getSession().setAttribute("password", password);
-
-            request.getRequestDispatcher("menu.jsp").forward(request, response);
+            request.getRequestDispatcher(Directories.baseView + "menu.jsp").forward(request, response);
 
         } catch (Exception e) {
 
             request.getSession().invalidate();
 
-            request.getRequestDispatcher("error.jsp").forward(request,
-                    response);
+            new NoticeGenerator(request,
+                                "login denied",
+                                "/",
+                                "login page");
+
+            request.getRequestDispatcher(Directories.baseView + "error.jsp").forward(request, response);
 
         }
 
@@ -77,8 +81,12 @@ public class LoginManagementServlet extends HttpServlet {
 
             request.getSession().invalidate();
 
-            request.getRequestDispatcher("success_logout.jsp").forward(request, response);
+            new NoticeGenerator(request,
+                                "logout success",
+                                "/",
+                                "login page");
 
+            request.getRequestDispatcher(Directories.baseView + "success.jsp").forward(request, response);
     }
 
 }

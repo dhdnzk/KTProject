@@ -44,23 +44,23 @@ class EmployeeDAO {
     // TODO : Add comment
     void addEmployee (EmployeeBean employeeBean) throws Exception {
 
-        String sqlQuery = "INSERT INTO m_ployee (emp_code, l_name, f_name, " +
+        String sqlQuery = "INSERT INTO m_employee (l_name, f_name, " +
                 "l_kana_name, f_kana_name, sex, birth_day, section_code, " +
-                "emp_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "emp_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         Connection connection = ConnectionManager.getInstance().getConnection();
 
         PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
 
-        preparedStatement.setString(1, employeeBean.getEmpCode());
-        preparedStatement.setString(2, employeeBean.getLName());
-        preparedStatement.setString(3, employeeBean.getFName());
-        preparedStatement.setString(4, employeeBean.getLKana());
-        preparedStatement.setString(5, employeeBean.getFKana());
-        preparedStatement.setByte(6, employeeBean.getSex());
-        preparedStatement.setDate(7, employeeBean.getBirth());
-        preparedStatement.setString(8, employeeBean.getSectionCode());
-        preparedStatement.setDate(9, employeeBean.getEmpDate());
+//        preparedStatement.setString(1, employeeBean.getEmpCode());
+        preparedStatement.setString(1, employeeBean.getLName());
+        preparedStatement.setString(2, employeeBean.getFName());
+        preparedStatement.setString(3, employeeBean.getLKana());
+        preparedStatement.setString(4, employeeBean.getFKana());
+        preparedStatement.setByte(5, employeeBean.getSex());
+        preparedStatement.setDate(6, employeeBean.getBirth());
+        preparedStatement.setString(7, employeeBean.getSectionCode());
+        preparedStatement.setDate(8, employeeBean.getEmpDate());
 //        preparedStatement.setTimestamp(10, new Timestamp(System.currentTimeMillis()));
 
         preparedStatement.executeUpdate();

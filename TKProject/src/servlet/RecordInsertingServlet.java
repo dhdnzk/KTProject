@@ -2,6 +2,7 @@ package servlet;
 
 import dao.DAOManager;
 import dao.EmployeeBean;
+import servlet.servlet.noticeSupport.NoticeGenerator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -50,7 +51,7 @@ public class RecordInsertingServlet extends HttpServlet {
 
 			EmployeeBean employeeBean = new EmployeeBean();
 
-			employeeBean.setEmpCode(request.getParameter("employee_code"));
+//			employeeBean.setEmpCode(request.getParameter("employee_code"));
 			employeeBean.setLName(request.getParameter("l_name"));
 			employeeBean.setFName(request.getParameter("f_name"));
 			employeeBean.setLKana(request.getParameter("l_kana_name"));
@@ -59,7 +60,7 @@ public class RecordInsertingServlet extends HttpServlet {
 
 			Date BirthDate = Date.valueOf(request.getParameter("birth_year")+"-"+request.getParameter("birth_month")+"-"+request.getParameter("birth_day"));
 			employeeBean.setBirth(BirthDate);
-			employeeBean.setSectionCode(request.getParameter("section_code"));
+//			employeeBean.setSectionCode(request.getParameter("section_code"));
 
 			Date EmpDate = Date.valueOf (request.getParameter("emp_year")+"-"+request.getParameter("emp_month")
 					+"-"+request.getParameter("emp_day"));
@@ -69,11 +70,21 @@ public class RecordInsertingServlet extends HttpServlet {
 
 			daoManager.addEmployees(employeeBean);
 
-			request.getRequestDispatcher("sucess_register.jsp").forward(request, response);
+			new NoticeGenerator(request,
+								"insert success : " + employeeBean.getLName(),
+								"/recordShowingServlet",
+								"return");
+
+			request.getRequestDispatcher(directory.Directories.baseView + "success.jsp").forward(request, response);
 
 		} catch(Exception e){
 
-			request.getRequestDispatcher("error.jsp").forward(request, response);
+			new NoticeGenerator(request,
+								"insert denied",
+								"/menu",
+								"return");
+
+			request.getRequestDispatcher(directory.Directories.baseView + "error.jsp").forward(request, response);
 
 		}
 
@@ -100,7 +111,7 @@ public class RecordInsertingServlet extends HttpServlet {
 
 		request.getSession().setAttribute("departmentList", departmentList );
 
-		request.getRequestDispatcher("registration.jsp").forward(request, response);
+		request.getRequestDispatcher(directory.Directories.baseView + "registration.jsp").forward(request, response);
 
 	}
 
@@ -108,7 +119,7 @@ public class RecordInsertingServlet extends HttpServlet {
 
 			response) throws ServletException, IOException {
 
-		request.getRequestDispatcher("menu.jsp").forward(request, response);
+		request.getRequestDispatcher(directory.Directories.baseView + "menu.jsp").forward(request, response);
 
 
 	}

@@ -1,7 +1,9 @@
 package servlet;
 
 import dao.DAOManager;
+import directory.Directories;
 import exception.DeleteFailedException;
+import servlet.servlet.noticeSupport.NoticeGenerator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,42 +24,33 @@ public class RecordDeletionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 						  HttpServletResponse response) throws ServletException, IOException {
 
-		String url = null;
-		String link = null;
-		String message = null;
-
 		DAOManager daoManager = new DAOManager();
-
+		RequestDispatcher rd = null;
 		try{
 
 			daoManager.deleteEmployee(request.getParameter("code"));
 
-			message = request.getParameter("l_name");
+			new NoticeGenerator(request,
+								"delete success : ",
+								"/recordShowingServlet",
+								"return");
 
-			url = "success_delete.html";
+			rd = request.getRequestDispatcher(Directories.baseView + "success.jsp");
 
 		}catch(DeleteFailedException e) {
 
-			message = e.getMessage();
+			new NoticeGenerator(request,
+								"delete failed",
+								"/recordShowingServlet",
+								"return");
 
-			url = "error.jsp";
-
-			link = "emp_list.jsp";
-
-			request.setAttribute("link","emp_list.jsp");
-					request.setAttribute("link_view", "従業員一覧");
+			rd = request.getRequestDispatcher(Directories.baseView + "error.jsp");
 
 		} catch (Exception e) {
 
 			e.printStackTrace();
 
 		}
-		request.setAttribute("message", message);
-
-		RequestDispatcher rd = request.getRequestDispatcher(url);
-
 		rd.forward(request, response);
-
 	}
-
 }

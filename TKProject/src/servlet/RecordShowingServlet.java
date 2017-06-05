@@ -1,6 +1,8 @@
 package servlet;
 
 import dao.DAOManager;
+import directory.Directories;
+import servlet.servlet.noticeSupport.NoticeGenerator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,15 +44,16 @@ public class RecordShowingServlet extends HttpServlet {
 
 		} catch (Exception e) {
 
-			session.setAttribute("message", "データベースに接続できませんでした");
-
-			session.setAttribute("url", "menu.jsp");
+			new NoticeGenerator(request,
+								"can't get data from DB",
+								"/menu",
+								"return");
 
 			nextPageUrl =  "error.jsp";
 
 		}
 
-		request.getRequestDispatcher(nextPageUrl).forward(request, response);
+		request.getRequestDispatcher(Directories.baseView + nextPageUrl).forward(request, response);
 
 	}
 
