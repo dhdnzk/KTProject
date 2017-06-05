@@ -13,14 +13,23 @@ import java.sql.Timestamp;
 public class EmployeeBean {
 
     private byte sex;
+
     private String empCode;
+
     private String lName;
+
     private String fName;
+
     private String lKana;
+
     private String fKana;
+
     private String sectionCode;
+
     private Date birth;
+
     private Date empDate;
+
     private Timestamp updateDate;
 
     public void setSex(byte sex) {
