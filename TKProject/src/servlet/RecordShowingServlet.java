@@ -3,6 +3,7 @@ package servlet;
 import dao.DAOManager;
 import filePath.Path;
 import servlet.servlet.noticeSupport.NoticeGenerator;
+import dao.support.SearchEmployee;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,17 +31,55 @@ public class RecordShowingServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		try {
 			if (request.getParameter("search_mode") == null) {
-				System.out.println("null");
-			} else if(request.getParameter("search_mode").equals("")) {
-				System.out.println("\"\"");
+				showAllEmployees(request, response);
 			} else {
-				System.out.println("nothing");
+
+				int mode;
+
+				String url;
+
+				switch(request.getParameter("search_mode")) {
+					case "code" :
+						mode = SearchEmployee.SEARCH_CODE;
+						break;
+
+					case "name" :
+						mode = SearchEmployee.SEARCH_KANJI;
+						break;
+
+					case "hurigana" :
+						mode = SearchEmployee.SEARCH_NAME;
+						break;
+
+					case "section" :
+						mode = SearchEmployee.SEARCH_SECTION;
+						break;
+
+					default :
+						mode = 0;
+						break;
+				}
+
+				DAOManager dao = new DAOManager();
+				try {
+					request.setAttribute("list", dao.searchEmployee(mode, request.getParameter("search")));
+
+					url = "emp_list.jsp";
+
+				} catch (Exception e) {
+					new NoticeGenerator(request,
+										"search failed",
+										"/recordShowingServlet",
+										"return");
+
+					url = "error.jsp";
+
+
+				}
+				request.getRequestDispatcher(Path.BASE_VIEW + url).forward(request, response);
 			}
-		} catch(NullPointerException e) {
-			e.printStackTrace();
-		}
+
 
 	}
 

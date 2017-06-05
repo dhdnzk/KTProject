@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -66,6 +67,12 @@ public class DAOManager {
 
         employeeDao.deleteEmployee(code);
 
+    }
+
+    //TODO : add comment
+    public List<EmployeeBean> searchEmployee(int mode, String keyword) throws Exception {
+        EmployeeDAO dao = new EmployeeDAO();
+        return dao.employeeSearchByString(mode, keyword);
     }
 
 

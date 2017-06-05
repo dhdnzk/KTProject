@@ -38,7 +38,7 @@
         <option value="section">所属</option>
     </select>
     <input type="search" name="search" />
-    <input id="small-button" class="context" type="submit" value="検索" />
+    <input type="submit" value="検索" />
 </form>
 
 <div class="main_container">
@@ -68,9 +68,9 @@
                 <td><%=aList.getLName() + aList.getFName()%></td>
                 <td><%=aList.getLKana() + aList.getFKana()%></td>
                 <td><% if (aList.getSex() == 0) {%>
-                    ’j
+
                     <%} else {%>
-                    —
+                    
                     <%}%></td>
                 <td><%=aList.getBirth()%></td>
                 <td><%=aList.getSectionCode()%></td>
