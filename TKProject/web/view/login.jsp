@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="/css/main_container.css" />
     <meta charset="UTF-8">
     <title>Welcome to TeamB</title>
     <style type="text/css">
+        .main_container {
+            width: 600px;
+            height: 300px;
+            padding: 2%;
+            border: 1px ridge black;
+            margin: 10% auto 0 auto;
+            text-align: center;
+        }
         div.container{
 
             text-align: left;
