@@ -22,109 +22,120 @@
 
 </head>
 <body>
-<p>registration form!</p>
+<div class="main_container">
+	<p>registration form!</p>
+	<form action="recordInsertingServlet" method="POST" >
+		<table>
+			<tr>
+				<td>
+					ID:
+				</td>
+				<td>
+					<input type="text" width="100" name="employee_code">
+				</td>
+			</tr>
 
-<form action="recordInsertingServlet" method="POST" >
-	<table>
-		<tr>
-			ID:
-			<input type="text" width="100" name="employee_code">
-		</tr>
+			<tr>
+				<td>Name:</td>
+				<td><input type="text" width="50" name="l_name"></td>
+				<td><input type="text" width="50" name="f_name"></td>
+			</tr>
 
-		<tr>
-			<td>Name:</td>
-			<td><input type="text" width="50" name="l_name"></td>
-			<td><input type="text" width="50" name="f_name"></td>
-		</tr>
-
-		<tr>
-			<td>Name(kana):</td>
-			<td><input type="text" width="50" name="l_kana_name"></td>
-			<td><input type="text" width="50" name="f_kana_name"></td>
-		</tr>
-		<tr>
-			<td>SEX:</td>
-			<td><input type="radio" name="sex" value="0" checked="checked"></td>
-			<td><input type="radio" name="sex" value="1"></td>
-		</tr>
-		<tr>
-			<td>Birthday:</td>
-			<td>
-				<select name ="birth_year">
-					<%for(int i = 1950; i < 2018; i++) {%>
-					<option value="<%= i %>"><%= i %></option>
-					<%} %>
-				</select>
-                年
-			</td>
-			<td>
-				<select name ="birth_month">
-					<%for(int i = 1; i < 13; i++) {%>
-					<option value="<%= i %>"><%= i %></option>
-					<%} %>
-				</select>
-				月
-			</td>
-			<td>
-				<select name ="birth_day">
-					<%for(int i = 1; i < 31; i++) {%>
-					<option value="<%= i %>"><%= i %></option>
-					<%} %>
-				</select>
-				日
-			</td>
-		</tr>
-		<tr>
-			<td>所属部署:</td>
-			<td>
-				<select type="select" name="section">
-					<%
-						ArrayList<String> departmentList =
-								(ArrayList<String>)	request.getSession().getAttribute("departmentList");
-						for (String aDepartmentList : departmentList) {%>
-					<option value="<%= aDepartmentList %>"><%= aDepartmentList %></option>
-					<%}	%>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td>入社日:</td>
-			<td>
-				<select name ="emp_year">
-					<%for(int i = 1950; i < 2018; i++) {%>
-					<option value="<%= i %>"><%= i %>
-					</option>
-					<%} %>
-				</select>
-				年
-			</td>
-			<td>
-				<select name ="emp_month">
-					<%for(int i = 1; i < 13; i++) {%>
-					<option value="<%= i %>"><%= i %>
-					</option>
-					<%} %>
-				</select>
-				月
-			</td>
-			<td>
-				<select name ="emp_day">
-					<%for(int i = 1; i < 31; i++) {%>
-					<option value="<%= i %>"><%= i %>
-					</option>
-					<%} %>
-				</select>
-				日
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<input type="submit" name="button" value="backToMenuPage">
-				<input type="submit" name="button" value="registration">
-				<input type="reset"  name="button" value="clear">
-			</td>
-		<tr>
-	</table>
-</form>
+			<tr>
+				<td>Name(kana):</td>
+				<td><input type="text" width="50" name="l_kana_name"></td>
+				<td><input type="text" width="50" name="f_kana_name"></td>
+			</tr>
+			<tr>
+				<td>SEX:</td>
+				<td><input type="radio" name="sex" value="0">男性</td>
+				<td><input type="radio" name="sex" value="1">女性</td>
+			</tr>
+			<tr>
+				<td>Birthday:</td>
+				<td>
+					<input type="date" name="birthday" />
+				</td>
+				<%--<td>
+					<select name ="birth_year">
+						<%for(int i = 1950; i < 2018; i++) {%>
+						<option value="<%= i %>"><%= i %></option>
+						<%} %>
+					</select>
+					年
+				</td>
+				<td>
+					<select name ="birth_month">
+						<%for(int i = 1; i < 13; i++) {%>
+						<option value="<%= i %>"><%= i %></option>
+						<%} %>
+					</select>
+					月
+				</td>
+				<td>
+					<select name ="birth_day">
+						<%for(int i = 1; i < 31; i++) {%>
+						<option value="<%= i %>"><%= i %></option>
+						<%} %>
+					</select>
+					日
+				</td>--%>
+			</tr>
+			<tr>
+				<td>所属部署:</td>
+				<td>
+					<select type="select" name="section">
+						<%
+							ArrayList<String> departmentList =
+									(ArrayList<String>)	request.getSession().getAttribute("departmentList");
+							for (String aDepartmentList : departmentList) {%>
+						<option value="<%= aDepartmentList %>"><%= aDepartmentList %></option>
+						<%}	%>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>入社日:</td>
+				<td>
+					<input type="date" name="emp_join" />
+				</td>
+				<%--<td>
+					<select name ="emp_year">
+						<%for(int i = 1950; i < 2018; i++) {%>
+						<option value="<%= i %>"><%= i %>
+						</option>
+						<%} %>
+					</select>
+					年
+				</td>
+				<td>
+					<select name ="emp_month">
+						<%for(int i = 1; i < 13; i++) {%>
+						<option value="<%= i %>"><%= i %>
+						</option>
+						<%} %>
+					</select>
+					月
+				</td>
+				<td>
+					<select name ="emp_day">
+						<%for(int i = 1; i < 31; i++) {%>
+						<option value="<%= i %>"><%= i %>
+						</option>
+						<%} %>
+					</select>
+					日
+				</td>--%>
+			</tr>
+			<tr>
+				<td>
+					<input type="submit" name="button" value="backToMenuPage">
+					<input type="submit" name="button" value="registration">
+					<input type="reset"  name="button" value="clear">
+				</td>
+			<tr>
+		</table>
+	</form>
+</div>
 </body>
 </html>
