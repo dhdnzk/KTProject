@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.*;
 import java.util.ArrayList;
+import ConnectionManager.*;
 
 // TODO : Add comment
 class EmployeeDAO {
@@ -21,14 +22,23 @@ class EmployeeDAO {
             EmployeeBean employeeBean = new EmployeeBean();
 
             employeeBean.setEmpCode(resultSet.getString("emp_code"));
+
             employeeBean.setLName(resultSet.getString("l_name"));
+
             employeeBean.setFName(resultSet.getString("f_name"));
+
             employeeBean.setLKana(resultSet.getString("l_kana_name"));
+
             employeeBean.setFKana(resultSet.getString("f_kana_name"));
+
             employeeBean.setSex(resultSet.getByte("sex"));
+
             employeeBean.setBirth(resultSet.getDate("birth_day"));
+
             employeeBean.setSectionCode(resultSet.getString("section_code"));
+
             employeeBean.setEmpDate(resultSet.getDate("emp_date"));
+
             employeeBean.setUpdateDate(resultSet.getTimestamp("update_date"));
 
             employeeBeanArrayList.add(employeeBean);
@@ -52,16 +62,21 @@ class EmployeeDAO {
 
         PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
 
-//        preparedStatement.setString(1, employeeBean.getEmpCode());
         preparedStatement.setString(1, employeeBean.getLName());
+
         preparedStatement.setString(2, employeeBean.getFName());
+
         preparedStatement.setString(3, employeeBean.getLKana());
+
         preparedStatement.setString(4, employeeBean.getFKana());
+
         preparedStatement.setByte(5, employeeBean.getSex());
+
         preparedStatement.setDate(6, employeeBean.getBirth());
+
         preparedStatement.setString(7, employeeBean.getSectionCode());
+
         preparedStatement.setDate(8, employeeBean.getEmpDate());
-//        preparedStatement.setTimestamp(10, new Timestamp(System.currentTimeMillis()));
 
         preparedStatement.executeUpdate();
 
