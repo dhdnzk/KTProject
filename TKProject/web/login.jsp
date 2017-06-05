@@ -10,8 +10,7 @@
             height: 300px;
             padding: 2%;
             border: 1px ridge black;
-            margin-left: 22%;
-            margin-top: 10%;
+            margin: 10% auto 0 auto;
             text-align: center;
         }
 
