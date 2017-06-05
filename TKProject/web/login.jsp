@@ -12,6 +12,7 @@
             border: 1px ridge black;
             margin: 10% auto 0 auto;
             text-align: center;
+
         }
 
         div.container{
