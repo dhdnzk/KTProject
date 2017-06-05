@@ -1,13 +1,83 @@
 package dao;
 
+import dao.support.EmployeeSearchMode;
 import exception.DeleteFailedException;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
+
 import ConnectionManager.*;
 
 // TODO : Add comment
 class EmployeeDAO {
+
+    // TODO : Add commentint
+    List<EmployeeBean> employeeSearchByString(EmployeeSearchMode mode, String search) throws Exception {
+
+        String sql = "SELECT * FROM m_employee JOIN m_section ON m_employee.section_code = m_section.section_code WHERE ";
+
+        switch(mode) {
+            case SEARCH_CODE:
+                sql += "emp_code";
+                break;
+
+            case SEARCH_KANJI:
+                sql += "CONCAT(l_name, f_name)";
+                break;
+
+            case SEARCH_NAME:
+                sql += "CONCAT(l_kana_name, f_kana_name)";
+                break;
+
+            case SEARCH_SECTION:
+                sql += "section_name";
+                break;
+
+            default:
+                throw new Exception();
+        }
+
+        sql += " LIKE '%" + search + "%'";
+
+        ResultSet resultSet = ConnectionManager.getInstance()
+                .getConnectionStatement().executeQuery(sql);
+
+        List<EmployeeBean> employeeBeanArrayList = new ArrayList<EmployeeBean>();
+
+        while(resultSet.next()){
+
+            EmployeeBean employeeBean = new EmployeeBean();
+
+            employeeBean.setEmpCode(resultSet.getString("emp_code"));
+
+            employeeBean.setLName(resultSet.getString("l_name"));
+
+            employeeBean.setFName(resultSet.getString("f_name"));
+
+            employeeBean.setLKana(resultSet.getString("l_kana_name"));
+
+            employeeBean.setFKana(resultSet.getString("f_kana_name"));
+
+            employeeBean.setSex(resultSet.getByte("sex"));
+
+            employeeBean.setBirth(resultSet.getDate("birth_day"));
+
+            employeeBean.setSectionCode(resultSet.getString("section_code"));
+
+            employeeBean.setEmpDate(resultSet.getDate("emp_date"));
+
+            employeeBean.setUpdateDate(resultSet.getTimestamp("update_date"));
+
+            employeeBeanArrayList.add(employeeBean);
+
+        }
+
+        ConnectionManager.invalidate();
+
+        return employeeBeanArrayList;
+
+    }
 
 
     // TODO : Add comment
