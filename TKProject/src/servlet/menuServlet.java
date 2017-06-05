@@ -22,9 +22,9 @@ public class menuServlet extends HttpServlet {
 
         try {
             session.getAttribute("id");
-            request.getRequestDispatcher(Directories.baseView + "menu.jsp").forward(request, response);
+            request.getRequestDispatcher(Directories.BASE_VIEW + "menu.jsp").forward(request, response);
         } catch(NullPointerException e) {
-            request.getRequestDispatcher(Directories.baseView + "login.jsp").forward(request, response);
+            request.getRequestDispatcher(Directories.BASE_VIEW + "login.jsp").forward(request, response);
         }
     }
 }

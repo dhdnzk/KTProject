@@ -35,7 +35,7 @@ public class RecordDeletionServlet extends HttpServlet {
 								"/recordShowingServlet",
 								"return");
 
-			rd = request.getRequestDispatcher(Directories.baseView + "success.jsp");
+			rd = request.getRequestDispatcher(Directories.BASE_VIEW + "success.jsp");
 
 		}catch(DeleteFailedException e) {
 
@@ -44,7 +44,7 @@ public class RecordDeletionServlet extends HttpServlet {
 								"/recordShowingServlet",
 								"return");
 
-			rd = request.getRequestDispatcher(Directories.baseView + "error.jsp");
+			rd = request.getRequestDispatcher(Directories.BASE_VIEW + "error.jsp");
 
 		} catch (Exception e) {
 

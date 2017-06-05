@@ -53,7 +53,7 @@ public class RecordShowingServlet extends HttpServlet {
 
 		}
 
-		request.getRequestDispatcher(Directories.baseView + nextPageUrl).forward(request, response);
+		request.getRequestDispatcher(Directories.BASE_VIEW + nextPageUrl).forward(request, response);
 
 	}
 

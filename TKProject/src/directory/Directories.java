@@ -5,6 +5,6 @@ package directory;
  * set root directories for request dispatch
  */
 public class Directories {
-    static public final String baseView = "/view/";
+    static public final String BASE_VIEW = "/view/";
 
 }

@@ -58,7 +58,7 @@ public class LoginManagementServlet extends HttpServlet {
 
             request.getSession().setAttribute("id", id);
 
-            request.getRequestDispatcher(Directories.baseView + "menu.jsp").forward(request, response);
+            request.getRequestDispatcher(Directories.BASE_VIEW + "menu.jsp").forward(request, response);
 
         } catch (Exception e) {
 
@@ -69,7 +69,7 @@ public class LoginManagementServlet extends HttpServlet {
                                 "/",
                                 "login page");
 
-            request.getRequestDispatcher(Directories.baseView + "error.jsp").forward(request, response);
+            request.getRequestDispatcher(Directories.BASE_VIEW + "error.jsp").forward(request, response);
 
         }
 
@@ -86,7 +86,7 @@ public class LoginManagementServlet extends HttpServlet {
                                 "/",
                                 "login page");
 
-            request.getRequestDispatcher(Directories.baseView + "success.jsp").forward(request, response);
+            request.getRequestDispatcher(Directories.BASE_VIEW + "success.jsp").forward(request, response);
     }
 
 }
