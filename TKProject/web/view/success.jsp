@@ -3,19 +3,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+	<link rel="stylesheet" type="text/css" href="/css/main_container.css" />
 	<meta http-equiv="Content-Type" content="text/html; charset=Windows-31J">
 	<title>成功画面</title>
 
 	<style type="text/css">
-
-		div.main_container {
-			width: 600px;
-			height: 300px;
-			padding: 2%;
-			border: 1px ridge black;
-			margin-left: 22%;
-			margin-top: 10%;
-		}
 
 		div.main_container p {
 

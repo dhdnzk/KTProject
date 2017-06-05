@@ -1,5 +1,7 @@
 package dao;
 
+import exception.DeleteFailedException;
+
 import java.sql.*;
 import java.util.ArrayList;
 import ConnectionManager.*;
@@ -87,11 +89,20 @@ class EmployeeDAO {
     // TODO : Create QUERY sentence to delete the selected record.
     // TODO : Add comment
     // FIXME : what is the meaning of parameter?
-    void deleteEmployee(String code) throws Exception {
+    void deleteEmployee(String code) throws DeleteFailedException, Exception {
 
-        Statement statement = ConnectionManager.getInstance().getConnectionStatement();
+        String sql = "DELETE FROM m_employee WHERE emp_code = ?";
 
-        ConnectionManager.invalidate();
+        Connection con = ConnectionManager.getInstance().getConnection();
+
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setString(1, code);
+
+        int num = pstmt.executeUpdate();
+
+        if(num != 1) {
+            throw new DeleteFailedException();
+        }
 
     }
 

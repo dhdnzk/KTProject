@@ -1,18 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="/css/main_container.css" />
     <meta charset="UTF-8">
     <title>Title</title>
     <style type="text/css">
 
-        div.main_container {
-            width: 600px;
-            height: 300px;
-            padding: 2%;
-            border: 1px ridge black;
-            margin-left: 22%;
-            margin-top: 10%;
-        }
 
         div.container_title {
             font-size: 40px;
