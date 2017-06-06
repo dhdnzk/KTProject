@@ -52,16 +52,18 @@ public class RecordInsertingServlet extends HttpServlet {
 
 			EmployeeBean employeeBean = new EmployeeBean();
 
-//			employeeBean.setEmpCode(request.getParameter("employee_code"));
 			employeeBean.setLName(request.getParameter("l_name"));
+
 			employeeBean.setFName(request.getParameter("f_name"));
+
 			employeeBean.setLKana(request.getParameter("l_kana_name"));
+
 			employeeBean.setFKana(request.getParameter("f_kana_name"));
+
 			employeeBean.setSex(Byte.parseByte(request.getParameter("sex")));
 
 			Date BirthDate = Date.valueOf(request.getParameter("birth_year")+"-"+request.getParameter("birth_month")+"-"+request.getParameter("birth_day"));
 			employeeBean.setBirth(BirthDate);
-//			employeeBean.setSectionCode(request.getParameter("section_code"));
 
 			Date EmpDate = Date.valueOf (request.getParameter("emp_year")+"-"+request.getParameter("emp_month")
 					+"-"+request.getParameter("emp_day"));
