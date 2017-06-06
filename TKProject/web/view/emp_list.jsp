@@ -6,7 +6,11 @@
 <html>
 <head>
     <title></title>
+
+
+
     <style type="text/css">
+
         .main_container {
             width: 600px;
             height: 300px;
@@ -15,68 +19,113 @@
             margin: 10% auto 0 auto;
             text-align: center;
         }
-        table, td, th {
+
+        .main_container_middle {
+
+            height: 75%;
+            width: 100%;
+
+        }
+
+        .table-wrapper {
+
+            overflow-x: hidden;
+            overflow-y: auto;
+            height: 100%;
+
+        }
+
+        table {
+
+            width: 99%;
+            border-collapse: collapse;
+
+        }
+
+        td {
+
+            border-bottom: 1px solid #ccc;
+            padding: 5px;
+
+        }
+
+        td + td {
+
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+
+        }
+
+        td + th {
+
+        }
+
+        .main_container_middle table tr td {
 
             border: 1px solid;
 
         }
 
-        div.sub1 {
+        .main_container_bottom table tr td{
 
-            display: inline-flex;
+            border: hidden;
 
         }
 
     </style>
 </head>
 <body>
-<form action="/recordShowingServlet" method="post">
-    <select name="search_mode">
-        <option value="code">従業員コード</option>
-        <option value="name">氏名</option>
-        <option value="hurigana">フリガナ</option>
-        <option value="section">所属</option>
-    </select>
-    <input type="search" name="search" />
-    <input type="submit" value="検索" />
-</form>
-
 <div class="main_container">
-<%
-    ArrayList<EmployeeBean> employeeList = (ArrayList<EmployeeBean>)
-            session.getAttribute("employeeList");
+    <form action="/recordShowingServlet" method="post">
+        <select name="search_mode">
+            <option value="code">従業員コード</option>
+            <option value="name">氏名</option>
+            <option value="hurigana">フリガナ</option>
+            <option value="section">所属</option>
+        </select>
+        <input type="search" name="search" />
+        <input type="submit" value="検索" />
+    </form>
 
-    ArrayList<String> departmentNameList = (ArrayList<String>)
-            session.getAttribute("departmentNameList");
+    <%
+        ArrayList<EmployeeBean> employeeList = (ArrayList<EmployeeBean>)
+                session.getAttribute("employeeList");
 
-%>
+        ArrayList<String> departmentNameList = (ArrayList<String>)
+                session.getAttribute("departmentNameList");
+
+    %>
 
     <h1>Employee List</h1>
 
-    <table>
-        <tr>
-            <th>Employee list</th>
-            <th>ID</th>
-            <th>name</th>
-            <th>kana</th>
-            <th>SEX</th>
-            <th>Birthday</th>
-            <th>Department</th>
-        </tr>
-        <form action = "recordDeletionServlet" method = "POST">
-                <%for(EmployeeBean aList: employeeList){%>
-            <tr>
-                <td><input type="radio" name="code"
-                           value="<%=aList.getEmpCode()%>"></td>
-                <td><%=aList.getEmpCode() %></td>
-                <td><%=aList.getLName() + aList.getFName()%></td>
-                <td><%=aList.getLKana() + aList.getFKana()%></td>
-                <td><%=(aList.getSex() == 0 ? "男" : "女")%></td>
-                <td><%=aList.getBirth()%></td>
-                <td><%=departmentNameList.get(Integer.parseInt(aList.getSectionCode()) - 1)%></td>
-            </tr>
-                <%}%>
-    </table>
+    <div class="main_container_middle">
+        <div class="table-wrapper">
+            <table>
+                <tr>
+                    <th>Employee list</th>
+                    <th>ID</th>
+                    <th>name</th>
+                    <th>kana</th>
+                    <th>SEX</th>
+                    <th>Birthday</th>
+                    <th>Department</th>
+                </tr>
+                <form action = "recordDeletionServlet" method = "POST">
+                        <%for(EmployeeBean aList: employeeList){%>
+                    <tr>
+                        <td><input type="radio" name="code"
+                                   value="<%=aList.getEmpCode()%>"></td>
+                        <td><%=aList.getEmpCode() %></td>
+                        <td><%=aList.getLName() + aList.getFName()%></td>
+                        <td><%=aList.getLKana() + aList.getFKana()%></td>
+                        <td><%=(aList.getSex() == 0 ? "男" : "女")%></td>
+                        <td><%=aList.getBirth()%></td>
+                        <td><%=departmentNameList.get(Integer.parseInt(aList.getSectionCode()) - 1)%></td>
+                    </tr>
+                        <%}%>
+            </table>
+        </div>
+    </div>
 
     <div class = "sub1">
         <input type = submit value = "delete">
