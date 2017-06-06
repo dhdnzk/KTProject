@@ -218,23 +218,21 @@ class EmployeeDAO {
      * I don't have any idea to handle this exceptions yet.
      * If you have a good idea, please fix it.
      */
-    ArrayList<String> getDepartmentListFromMSectionTable() throws Exception {
+    ArrayList<String[]> getDepartmentListFromMSectionTable() throws Exception {
 
-        String query = "SELECT section_name from emp_sys_db.m_section";
+        String query = "SELECT section_name, section_code from emp_sys_db.m_section";
 
         ResultSet resultSet = ConnectionManager.getInstance()
                 .getConnectionStatement().executeQuery(query);
 
-        ArrayList<String> sectionList = new ArrayList<>();
+        ArrayList<String[]> sectionList = new ArrayList<String[]>();
 
         while(resultSet.next()) {
-
-            sectionList.add(resultSet.getString("section_name"));
-
+            String[] str = {resultSet.getString("section_code"), resultSet.getString("section_name")};
+            sectionList.add(str);
         }
 
         ConnectionManager.invalidate();
-
         return sectionList;
 
     }

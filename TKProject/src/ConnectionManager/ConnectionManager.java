@@ -10,7 +10,7 @@ public class ConnectionManager {
 
     private static ConnectionManager connectionManager;
 
-    private static final String URL = "jdbc:mysql://localhost:3306/emp_sys_db";
+    private static final String URL = "jdbc:mysql://localhost:3306/emp_sys_db?useSSL=false";
 
     private static final String ID = "TeamB";
 

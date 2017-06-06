@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 // TODO : Refactoring Class RecordInsertingServlet
@@ -20,13 +21,20 @@ import java.util.ArrayList;
 		{"/recordInsertingServlet"})
 public class RecordInsertingServlet extends HttpServlet {
 
+    // TODO : Add comment
+    protected void doGet(HttpServletRequest request, HttpServletResponse
+            response) throws ServletException, IOException  {
+
+        toRegistrationPage(request, response);
+    }
+
 	// TODO : Add comment
 	protected void doPost(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException  {
 
 		String logic = request.getParameter("button");
 
-		if ( logic.equals("toRegistrationPage") ) {
+		if ( logic.equals("toRegistrationPage") || logic.equals("return")) {
 
 			toRegistrationPage(request, response);
 
@@ -49,7 +57,6 @@ public class RecordInsertingServlet extends HttpServlet {
 			response) throws ServletException, IOException  {
 
 		try{
-
 			EmployeeBean employeeBean = new EmployeeBean();
 
 			employeeBean.setLName(request.getParameter("l_name"));
@@ -62,11 +69,14 @@ public class RecordInsertingServlet extends HttpServlet {
 
 			employeeBean.setSex(Byte.parseByte(request.getParameter("sex")));
 
-			Date BirthDate = Date.valueOf(request.getParameter("birth_year")+"-"+request.getParameter("birth_month")+"-"+request.getParameter("birth_day"));
+			Date BirthDate = Date.valueOf(request.getParameter("birthday"));
+
 			employeeBean.setBirth(BirthDate);
 
-			Date EmpDate = Date.valueOf (request.getParameter("emp_year")+"-"+request.getParameter("emp_month")
-					+"-"+request.getParameter("emp_day"));
+			employeeBean.setSectionCode(request.getParameter("section_code"));
+
+			Date EmpDate = Date.valueOf (request.getParameter("emp_join"));
+
 			employeeBean.setEmpDate(EmpDate);
 
 			DAOManager daoManager = new DAOManager();
@@ -75,7 +85,7 @@ public class RecordInsertingServlet extends HttpServlet {
 
 			new NoticeGenerator(request,
 								"insert success : " + employeeBean.getLName(),
-								"/recordShowingServlet",
+								"/recordInsertingServlet",
 								"return");
 
 			request.getRequestDispatcher(Path.BASE_VIEW + "success.jsp").forward(request, response);
@@ -100,7 +110,7 @@ public class RecordInsertingServlet extends HttpServlet {
 
 		DAOManager daoManager = new DAOManager();
 
-		ArrayList<String> departmentList = null;
+		ArrayList<String[]> departmentList = null;
 
 		try {
 
@@ -115,7 +125,6 @@ public class RecordInsertingServlet extends HttpServlet {
 		request.getSession().setAttribute("departmentList", departmentList );
 
 		request.getRequestDispatcher(Path.BASE_VIEW + "registration.jsp").forward(request, response);
-
 	}
 
 	private void backToMenuPage(HttpServletRequest request, HttpServletResponse
