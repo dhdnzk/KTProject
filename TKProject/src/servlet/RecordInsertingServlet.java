@@ -110,11 +110,15 @@ public class RecordInsertingServlet extends HttpServlet {
 
 		DAOManager daoManager = new DAOManager();
 
-		ArrayList<String[]> departmentList = null;
+		ArrayList<String> departmentCodeList = null;
+
+		ArrayList<String> departmentNameList = null;
 
 		try {
 
-			departmentList = daoManager.getDepartmentListFromMSectionTable();
+			departmentCodeList = daoManager.getAllSectionCodes();
+
+			departmentNameList = daoManager.getAllSectionNames();
 
 		} catch (Exception e) {
 
@@ -122,7 +126,9 @@ public class RecordInsertingServlet extends HttpServlet {
 
 		}
 
-		request.getSession().setAttribute("departmentList", departmentList );
+		request.getSession().setAttribute("departmentCodeList", departmentCodeList);
+
+		request.getSession().setAttribute("departmentNameList", departmentNameList);
 
 		request.getRequestDispatcher(Path.BASE_VIEW + "registration.jsp").forward(request, response);
 	}
