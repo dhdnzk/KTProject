@@ -43,7 +43,12 @@
 
 <div class="main_container">
 <%
-    ArrayList<EmployeeBean> list = (ArrayList<EmployeeBean>) session.getAttribute("list");
+    ArrayList<EmployeeBean> employeeList = (ArrayList<EmployeeBean>)
+            session.getAttribute("employeeList");
+
+    ArrayList<String> departmentNameList = (ArrayList<String>)
+            session.getAttribute("departmentNameList");
+
 %>
 
     <h1>Employee List</h1>
@@ -52,29 +57,23 @@
         <tr>
             <th>Employee list</th>
             <th>ID</th>
-            <th>Employee code</th>
-            <th>L name</th>
-            <th>L kana</th>
+            <th>name</th>
+            <th>kana</th>
             <th>SEX</th>
             <th>Birthday</th>
-            <th>Section code</th>
+            <th>Department</th>
         </tr>
         <form action = "recordDeletionServlet" method = "POST">
-                <%for(EmployeeBean aList: list){%>
+                <%for(EmployeeBean aList: employeeList){%>
             <tr>
                 <td><input type="radio" name="code"
                            value="<%=aList.getEmpCode()%>"></td>
                 <td><%=aList.getEmpCode() %></td>
                 <td><%=aList.getLName() + aList.getFName()%></td>
                 <td><%=aList.getLKana() + aList.getFKana()%></td>
-                <td><% if (aList.getSex() == 0) {%>
-
-                    <%} else {%>
-                    
-                    <%}%></td>
+                <td><%=(aList.getSex() == 0 ? "男" : "女")%></td>
                 <td><%=aList.getBirth()%></td>
-                <td><%=aList.getSectionCode()%></td>
-                <td><%=aList.getEmpDate()%></td>
+                <td><%=departmentNameList.get(Integer.parseInt(aList.getSectionCode()) - 1)%></td>
             </tr>
                 <%}%>
     </table>

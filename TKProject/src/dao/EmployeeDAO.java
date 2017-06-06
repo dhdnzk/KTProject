@@ -12,33 +12,6 @@ import dao.support.SearchEmployee;
 // TODO : Add comment
 class EmployeeDAO {
 
-/*    // TODO : Add commentint
-    List<EmployeeBean> employeeSearchByString(EmployeeSearchMode mode, String search) throws Exception {
-
-        String sql = "SELECT * FROM m_employee JOIN m_section ON m_employee.section_code = m_section.section_code WHERE ";
-
-        switch(mode) {
-            case SEARCH_CODE:
-                sql += "emp_code";
-                break;
-
-            case SEARCH_KANJI:
-                sql += "CONCAT(l_name, f_name)";
-                break;
-
-            case SEARCH_NAME:
-                sql += "CONCAT(l_kana_name, f_kana_name)";
-                break;
-
-            case SEARCH_SECTION:
-                sql += "section_name";
-                break;
-
-            default:
-                throw new Exception();
-        }*/
-
-
     // TODO : Add commentint
     List<EmployeeBean> employeeSearchByString(int mode, String search) throws Exception {
 
@@ -237,6 +210,49 @@ class EmployeeDAO {
 
         ConnectionManager.invalidate();
         return sectionList;
+
+    }
+
+
+    public ArrayList<String> getAllSectionCodes() throws Exception {
+
+        String query = "SELECT section_code from emp_sys_db.m_section";
+
+        Statement statement = ConnectionManager.getInstance()
+                .getConnection().createStatement();
+
+        ResultSet resultSet = statement.executeQuery(query);
+
+        ArrayList<String> sectionCodeList = new ArrayList<>();
+
+        while(resultSet.next()) {
+
+            sectionCodeList.add(resultSet.getString("section_code"));
+
+        }
+
+        return sectionCodeList;
+
+    }
+
+    public ArrayList<String> getAllSectionNames() throws Exception {
+
+        String query = "SELECT section_name from emp_sys_db.m_section";
+
+        Statement statement = ConnectionManager.getInstance().getConnection()
+                .createStatement();
+
+        ResultSet resultSet = statement.executeQuery(query);
+
+        ArrayList<String> sectionNameList = new ArrayList<>();
+
+        while(resultSet.next()) {
+
+            sectionNameList.add(resultSet.getString("section_name"));
+
+        }
+
+        return sectionNameList;
 
     }
 

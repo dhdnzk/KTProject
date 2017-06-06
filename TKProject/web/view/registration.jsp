@@ -53,10 +53,16 @@
 				<td>
 					<select type="select" name="section_code">
 						<%
-							ArrayList<String[]> departmentList =
-									(ArrayList<String[]>) request.getSession().getAttribute("departmentList");
-							for (int i = 0; i < departmentList.size(); i++) {%>
-						<option value="<%= departmentList.get(i)[0] %>"><%= departmentList.get(i)[1] %></option>
+							ArrayList<String> departmentNameList =
+									(ArrayList<String>)
+											request.getSession().getAttribute("departmentNameList");
+
+							ArrayList<String> departmentCodeList =
+									(ArrayList<String>)
+											request.getSession().getAttribute("departmentCodeList");
+							for (int i = 0; i < departmentNameList.size(); i++) {%>
+						<option value="<%= departmentCodeList.get(i)%>">
+							<%=departmentNameList.get(i)%></option>
 						<%}	%>
 					</select>
 				</td>
