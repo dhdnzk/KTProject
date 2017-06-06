@@ -239,4 +239,47 @@ class EmployeeDAO {
 
     }
 
+
+    public ArrayList<String> getAllSectionCodes() throws Exception {
+
+        String query = "SELECT section_code from emp_sys_db.m_section";
+
+        Statement statement = ConnectionManager.getInstance()
+                .getConnection().createStatement();
+
+        ResultSet resultSet = statement.executeQuery(query);
+
+        ArrayList<String> sectionCodeList = new ArrayList<>();
+
+        while(resultSet.next()) {
+
+            sectionCodeList.add(resultSet.getString("section_code"));
+
+        }
+
+        return sectionCodeList;
+
+    }
+
+    public ArrayList<String> getAllSectionNames() throws Exception {
+
+        String query = "SELECT section_name from emp_sys_db.m_section";
+
+        Statement statement = ConnectionManager.getInstance().getConnection()
+                .createStatement();
+
+        ResultSet resultSet = statement.executeQuery(query);
+
+        ArrayList<String> sectionNameList = new ArrayList<>();
+
+        while(resultSet.next()) {
+
+            sectionNameList.add(resultSet.getString("section_name"));
+
+        }
+
+        return sectionNameList;
+
+    }
+
 }
