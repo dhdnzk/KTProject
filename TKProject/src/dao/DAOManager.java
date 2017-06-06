@@ -43,7 +43,7 @@ public class DAOManager {
     }
 
     // TODO : add comment
-    public ArrayList<String> getDepartmentListFromMSectionTable() throws Exception {
+    public ArrayList<String[]> getDepartmentListFromMSectionTable() throws Exception {
 
         EmployeeDAO employeeDAO = new EmployeeDAO();
 

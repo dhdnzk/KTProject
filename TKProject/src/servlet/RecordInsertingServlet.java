@@ -103,7 +103,7 @@ public class RecordInsertingServlet extends HttpServlet {
 
 		DAOManager daoManager = new DAOManager();
 
-		ArrayList<String> departmentList = null;
+		ArrayList<String[]> departmentList = null;
 
 		try {
 
@@ -118,7 +118,6 @@ public class RecordInsertingServlet extends HttpServlet {
 		request.getSession().setAttribute("departmentList", departmentList );
 
 		request.getRequestDispatcher(Path.BASE_VIEW + "registration.jsp").forward(request, response);
-        System.out.println("finished");
 	}
 
 	private void backToMenuPage(HttpServletRequest request, HttpServletResponse

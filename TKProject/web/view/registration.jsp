@@ -27,15 +27,6 @@
 	<form action="recordInsertingServlet" method="POST" >
 		<table>
 			<tr>
-				<td>
-					ID:
-				</td>
-				<td>
-					<input type="text" width="100" name="employee_code">
-				</td>
-			</tr>
-
-			<tr>
 				<td>Name:</td>
 				<td><input type="text" width="50" name="l_name"></td>
 				<td><input type="text" width="50" name="f_name"></td>
@@ -84,12 +75,12 @@
 			<tr>
 				<td>所属部署:</td>
 				<td>
-					<select type="select" name="section">
+					<select type="select" name="section_code">
 						<%
-							ArrayList<String> departmentList =
-									(ArrayList<String>)	request.getSession().getAttribute("departmentList");
-							for (String aDepartmentList : departmentList) {%>
-						<option value="<%= aDepartmentList %>"><%= aDepartmentList %></option>
+							ArrayList<String[]> departmentList =
+									(ArrayList<String[]>) request.getSession().getAttribute("departmentList");
+							for (int i = 0; i < departmentList.size(); i++) {%>
+						<option value="<%= departmentList.get(i)[0] %>"><%= departmentList.get(i)[1] %></option>
 						<%}	%>
 					</select>
 				</td>
