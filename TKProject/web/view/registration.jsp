@@ -75,7 +75,7 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="submit" name="button" value="backToMenuPage">
+					<input type="button" value="backToMenuPage" onclick="location.href='/menu'">
 					<input type="submit" name="button" value="registration">
 					<input type="reset"  name="button" value="clear">
 				</td>
