@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 // TODO : Refactoring Class RecordDeletionServlet
 // TODO : Add comment
@@ -25,17 +26,27 @@ public class RecordDeletionServlet extends HttpServlet {
 						  HttpServletResponse response) throws ServletException, IOException {
 
 		DAOManager daoManager = new DAOManager();
+
 		RequestDispatcher rd = null;
+
 		try{
 
-			daoManager.deleteEmployee(request.getParameter("code"));
+			String[] checkedList = request.getParameterValues("code");
 
-			new NoticeGenerator(request,
-								"delete success : ",
-								"/recordShowingServlet",
-								"return");
+			if(checkedList == null || checkedList.length == 0) {
 
-			rd = request.getRequestDispatcher(Path.BASE_VIEW + "success.jsp");
+				throw new DeleteFailedException();
+
+			}
+
+				daoManager.deleteEmployees(checkedList);
+
+				new NoticeGenerator(request,
+						"delete success : ",
+						"/recordShowingServlet",
+						"return");
+
+				rd = request.getRequestDispatcher(Path.BASE_VIEW + "success.jsp");
 
 		}catch(DeleteFailedException e) {
 
@@ -51,6 +62,9 @@ public class RecordDeletionServlet extends HttpServlet {
 			e.printStackTrace();
 
 		}
+
 		rd.forward(request, response);
+
 	}
+
 }

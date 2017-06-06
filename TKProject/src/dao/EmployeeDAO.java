@@ -167,19 +167,25 @@ class EmployeeDAO {
     // TODO : Create QUERY sentence to delete the selected record.
     // TODO : Add comment
     // FIXME : what is the meaning of parameter?
-    void deleteEmployee(String code) throws DeleteFailedException, Exception {
+    void deleteEmployees(String[] codeList) throws
+            Exception {
 
         String sql = "DELETE FROM m_employee WHERE emp_code = ?";
 
         Connection con = ConnectionManager.getInstance().getConnection();
 
-        PreparedStatement pstmt = con.prepareStatement(sql);
-        pstmt.setString(1, code);
+        for(String codeName : codeList) {
 
-        int num = pstmt.executeUpdate();
+            PreparedStatement pstmt = con.prepareStatement(sql);
 
-        if(num != 1) {
-            throw new DeleteFailedException();
+            pstmt.setString(1, codeName);
+
+            if(pstmt.execute()) {
+
+                throw new DeleteFailedException();
+
+            }
+
         }
 
     }

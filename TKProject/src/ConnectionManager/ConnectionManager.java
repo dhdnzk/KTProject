@@ -12,9 +12,9 @@ public class ConnectionManager {
 
     private static final String URL = "jdbc:mysql://localhost:3306/emp_sys_db?useSSL=false";
 
-    private static final String ID = "TeamB";
+    private static final String ID = "TKProject";
 
-    private static final String PASSWORD = "TeamB";
+    private static final String PASSWORD = "TKProject";
 
     private Statement statement;
 
