@@ -14,7 +14,9 @@ import ConnectionManager.*;
  * @author Nekotoken
  * @version 1.0.0
  */
-class UserDAO {
+enum UserDAO {
+
+    USER_DAO;
 
     /**
      *

@@ -29,7 +29,7 @@ public enum DAOManager {
      */
     public void tryLogin (String id, String password) throws Exception {
 
-        UserDAO userDAO = new UserDAO();
+        UserDAO userDAO = UserDAO.USER_DAO;
 
         userDAO.tryLogin(id, password);
 
@@ -38,7 +38,7 @@ public enum DAOManager {
     // TODO : add comment
     public ArrayList<EmployeeBean> getAllEmployees() throws Exception {
 
-        EmployeeDAO employeeDao = new EmployeeDAO();
+        EmployeeDAO employeeDao = EmployeeDAO.EMPLOYEE_DAO;
 
         return employeeDao.getAllEmployees();
 
@@ -46,7 +46,7 @@ public enum DAOManager {
 
     public ArrayList<String> getAllSectionCodes() throws Exception {
 
-        EmployeeDAO employeeDAO = new EmployeeDAO();
+        EmployeeDAO employeeDAO = EmployeeDAO.EMPLOYEE_DAO;
 
         return employeeDAO.getAllSectionCodes();
 
@@ -54,7 +54,7 @@ public enum DAOManager {
 
     public ArrayList<String> getAllSectionNames() throws Exception {
 
-        EmployeeDAO employeeDAO = new EmployeeDAO();
+        EmployeeDAO employeeDAO = EmployeeDAO.EMPLOYEE_DAO;
 
         return employeeDAO.getAllSectionNames();
 
@@ -75,7 +75,7 @@ public enum DAOManager {
     // TODO : add comment
     public ArrayList<String[]> getDepartmentListFromMSectionTable() throws Exception {
 
-        EmployeeDAO employeeDAO = new EmployeeDAO();
+        EmployeeDAO employeeDAO = EmployeeDAO.EMPLOYEE_DAO;
 
         return employeeDAO.getDepartmentListFromMSectionTable();
 
@@ -84,7 +84,7 @@ public enum DAOManager {
     // TODO : add comment
     public void addEmployees (EmployeeBean employeeBean) throws Exception {
 
-        EmployeeDAO employeeDao = new EmployeeDAO();
+        EmployeeDAO employeeDao = EmployeeDAO.EMPLOYEE_DAO;
 
         employeeDao.addEmployee(employeeBean);
 
@@ -93,7 +93,7 @@ public enum DAOManager {
     // TODO : add comment
     public void deleteEmployees(String[] codeList) throws Exception {
 
-        EmployeeDAO employeeDao = new EmployeeDAO();
+        EmployeeDAO employeeDao = EmployeeDAO.EMPLOYEE_DAO;
 
         employeeDao.deleteEmployees(codeList);
 
@@ -101,7 +101,7 @@ public enum DAOManager {
 
     //TODO : add comment
     public ArrayList<EmployeeBean> searchEmployee(int mode, String keyword) throws Exception {
-        EmployeeDAO dao = new EmployeeDAO();
+        EmployeeDAO dao = EmployeeDAO.EMPLOYEE_DAO;
         return dao.employeeSearchByString(mode, keyword);
     }
 

@@ -10,7 +10,9 @@ import ConnectionManager.*;
 import dao.support.SearchEmployee;
 
 // TODO : Add comment
-class EmployeeDAO {
+enum  EmployeeDAO {
+
+    EMPLOYEE_DAO;
 
     // TODO : Add commentint
     ArrayList<EmployeeBean> employeeSearchByString(int mode, String search) throws Exception {
