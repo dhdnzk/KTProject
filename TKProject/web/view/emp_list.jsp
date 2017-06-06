@@ -7,8 +7,6 @@
 <head>
     <title></title>
 
-
-
     <style type="text/css">
 
         .main_container {
@@ -113,7 +111,7 @@
                 <form action = "recordDeletionServlet" method = "POST">
                         <%for(EmployeeBean aList: employeeList){%>
                     <tr>
-                        <td><input type="radio" name="code"
+                        <td><input type="checkbox" name="code"
                                    value="<%=aList.getEmpCode()%>"></td>
                         <td><%=aList.getEmpCode() %></td>
                         <td><%=aList.getLName() + aList.getFName()%></td>

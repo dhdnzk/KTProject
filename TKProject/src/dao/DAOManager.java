@@ -89,11 +89,11 @@ public class DAOManager {
     }
 
     // TODO : add comment
-    public void deleteEmployee (String code) throws Exception {
+    public void deleteEmployees(String[] codeList) throws Exception {
 
         EmployeeDAO employeeDao = new EmployeeDAO();
 
-        employeeDao.deleteEmployee(code);
+        employeeDao.deleteEmployees(codeList);
 
     }
 
