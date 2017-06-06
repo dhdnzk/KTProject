@@ -73,7 +73,7 @@
                 <td><%=aList.getLKana() + aList.getFKana()%></td>
                 <td><%=(aList.getSex() == 0 ? "男" : "女")%></td>
                 <td><%=aList.getBirth()%></td>
-                <td><%=departmentNameList.get(Integer.parseInt(aList.getSectionCode()))%></td>
+                <td><%=departmentNameList.get(Integer.parseInt(aList.getSectionCode()) - 1)%></td>
             </tr>
                 <%}%>
     </table>
