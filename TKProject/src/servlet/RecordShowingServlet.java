@@ -32,7 +32,9 @@ public class RecordShowingServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 			if (request.getParameter("search_mode") == null) {
+
 				showAllEmployees(request, response);
+
 			} else {
 
 				int mode;
@@ -57,17 +59,19 @@ public class RecordShowingServlet extends HttpServlet {
 						break;
 
 					default :
-						mode = 0;
+						mode = SearchEmployee.SEARCH_DEFAULT;
 						break;
 				}
 
 				DAOManager dao = new DAOManager();
 				try {
+
 					request.setAttribute("list", dao.searchEmployee(mode, request.getParameter("search")));
 
 					url = "emp_list.jsp";
 
 				} catch (Exception e) {
+
 					new NoticeGenerator(request,
 										"search failed",
 										"/recordShowingServlet",
@@ -77,9 +81,10 @@ public class RecordShowingServlet extends HttpServlet {
 
 
 				}
-				request.getRequestDispatcher(Path.BASE_VIEW + url).forward(request, response);
-			}
 
+				request.getRequestDispatcher(Path.BASE_VIEW + url).forward(request, response);
+
+			}
 
 	}
 
@@ -95,7 +100,8 @@ public class RecordShowingServlet extends HttpServlet {
 
 		try {
 
-			session.setAttribute("list", daoManager.getAllEmployees());
+			session.setAttribute("employeeList", daoManager.getAllEmployees());
+			session.setAttribute("departmentNameList", daoManager.getAllSectionNames());
 
 			nextPageUrl = "emp_list.jsp";
 
