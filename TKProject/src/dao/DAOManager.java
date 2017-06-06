@@ -42,6 +42,34 @@ public class DAOManager {
 
     }
 
+    public ArrayList<String> getAllSectionCodes() throws Exception {
+
+        EmployeeDAO employeeDAO = new EmployeeDAO();
+
+        return employeeDAO.getAllSectionCodes();
+
+    }
+
+    public ArrayList<String> getAllSectionNames() throws Exception {
+
+        EmployeeDAO employeeDAO = new EmployeeDAO();
+
+        return employeeDAO.getAllSectionNames();
+
+    }
+
+    public ArrayList<ArrayList<String>> getAllSectionInfo() throws Exception {
+
+        ArrayList<ArrayList<String>> allSectionInfo = new ArrayList<>();
+
+        allSectionInfo.add(getAllSectionCodes());
+
+        allSectionInfo.add(getAllSectionNames());
+
+        return allSectionInfo;
+
+    }
+
     // TODO : add comment
     public ArrayList<String> getDepartmentListFromMSectionTable() throws Exception {
 
