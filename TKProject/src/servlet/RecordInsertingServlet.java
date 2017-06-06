@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 // TODO : Refactoring Class RecordInsertingServlet
@@ -49,22 +50,19 @@ public class RecordInsertingServlet extends HttpServlet {
 			response) throws ServletException, IOException  {
 
 		try{
-
 			EmployeeBean employeeBean = new EmployeeBean();
 
-//			employeeBean.setEmpCode(request.getParameter("employee_code"));
 			employeeBean.setLName(request.getParameter("l_name"));
 			employeeBean.setFName(request.getParameter("f_name"));
 			employeeBean.setLKana(request.getParameter("l_kana_name"));
 			employeeBean.setFKana(request.getParameter("f_kana_name"));
 			employeeBean.setSex(Byte.parseByte(request.getParameter("sex")));
 
-			Date BirthDate = Date.valueOf(request.getParameter("birth_year")+"-"+request.getParameter("birth_month")+"-"+request.getParameter("birth_day"));
+			Date BirthDate = Date.valueOf(request.getParameter("birthday"));
 			employeeBean.setBirth(BirthDate);
-//			employeeBean.setSectionCode(request.getParameter("section_code"));
+			employeeBean.setSectionCode(request.getParameter("section_code"));
 
-			Date EmpDate = Date.valueOf (request.getParameter("emp_year")+"-"+request.getParameter("emp_month")
-					+"-"+request.getParameter("emp_day"));
+			Date EmpDate = Date.valueOf (request.getParameter("emp_join"));
 			employeeBean.setEmpDate(EmpDate);
 
 			DAOManager daoManager = new DAOManager();
