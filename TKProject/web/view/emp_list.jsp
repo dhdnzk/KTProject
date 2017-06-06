@@ -1,7 +1,7 @@
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="dao.EmployeeBean"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="dao.EmployeeBean"%>
 <!DOCTYPE html PUBLIC>
 <html>
 <head>
@@ -87,10 +87,10 @@
 
     <%
         ArrayList<EmployeeBean> employeeList = (ArrayList<EmployeeBean>)
-                session.getAttribute("employeeList");
+                request.getAttribute("employeeList");
 
         ArrayList<String> departmentNameList = (ArrayList<String>)
-                session.getAttribute("departmentNameList");
+                request.getAttribute("departmentNameList");
 
     %>
 
@@ -115,10 +115,14 @@
                                    value="<%=aList.getEmpCode()%>"></td>
                         <td><%=aList.getEmpCode() %></td>
                         <td><%=aList.getLName() + aList.getFName()%></td>
-                        <td><%=aList.getLKana() + aList.getFKana()%></td>
+                        <td><%if(aList.getLKana() != null) {out.print(aList.getLKana());}
+                            if(aList.getFKana() != null) {out.print(aList.getFKana());}%></td>
                         <td><%=(aList.getSex() == 0 ? "男" : "女")%></td>
-                        <td><%=aList.getBirth()%></td>
-                        <td><%=departmentNameList.get(Integer.parseInt(aList.getSectionCode()) - 1)%></td>
+                        <td><%if(aList.getBirth() != null) {out.print(aList.getBirth());}%></td>
+                        <td><%try {
+                                out.print(departmentNameList.get(Integer.parseInt(aList.getSectionCode()) - 1));
+                                    } catch(Exception e) {}%>
+                        </td>
                     </tr>
                         <%}%>
             </table>

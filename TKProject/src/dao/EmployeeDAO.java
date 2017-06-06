@@ -13,7 +13,7 @@ import dao.support.SearchEmployee;
 class EmployeeDAO {
 
     // TODO : Add commentint
-    List<EmployeeBean> employeeSearchByString(int mode, String search) throws Exception {
+    ArrayList<EmployeeBean> employeeSearchByString(int mode, String search) throws Exception {
 
         String sql = "SELECT * FROM m_employee JOIN m_section ON m_employee.section_code = m_section.section_code WHERE ";
 
@@ -43,7 +43,7 @@ class EmployeeDAO {
         ResultSet resultSet = ConnectionManager.getInstance()
                 .getConnectionStatement().executeQuery(sql);
 
-        List<EmployeeBean> employeeBeanArrayList = new ArrayList<EmployeeBean>();
+        ArrayList<EmployeeBean> employeeBeanArrayList = new ArrayList<EmployeeBean>();
 
         while(resultSet.next()){
 
@@ -76,6 +76,9 @@ class EmployeeDAO {
         ConnectionManager.invalidate();
 
         System.out.println(employeeBeanArrayList.size());
+        for(EmployeeBean bean : employeeBeanArrayList) {
+            System.out.println(bean.toString());
+        }
         return employeeBeanArrayList;
 
     }

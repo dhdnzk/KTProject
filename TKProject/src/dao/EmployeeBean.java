@@ -112,4 +112,19 @@ public class EmployeeBean {
         return updateDate;
     }
 
+    @Override
+    public String toString() {
+        return "EmployeeBean{" +
+                "sex=" + sex +
+                ", empCode='" + empCode + '\'' +
+                ", lName='" + lName + '\'' +
+                ", fName='" + fName + '\'' +
+                ", lKana='" + lKana + '\'' +
+                ", fKana='" + fKana + '\'' +
+                ", sectionCode='" + sectionCode + '\'' +
+                ", birth=" + birth +
+                ", empDate=" + empDate +
+                ", updateDate=" + updateDate +
+                '}';
+    }
 }
