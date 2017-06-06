@@ -12,33 +12,6 @@ import dao.support.SearchEmployee;
 // TODO : Add comment
 class EmployeeDAO {
 
-/*    // TODO : Add commentint
-    List<EmployeeBean> employeeSearchByString(EmployeeSearchMode mode, String search) throws Exception {
-
-        String sql = "SELECT * FROM m_employee JOIN m_section ON m_employee.section_code = m_section.section_code WHERE ";
-
-        switch(mode) {
-            case SEARCH_CODE:
-                sql += "emp_code";
-                break;
-
-            case SEARCH_KANJI:
-                sql += "CONCAT(l_name, f_name)";
-                break;
-
-            case SEARCH_NAME:
-                sql += "CONCAT(l_kana_name, f_kana_name)";
-                break;
-
-            case SEARCH_SECTION:
-                sql += "section_name";
-                break;
-
-            default:
-                throw new Exception();
-        }*/
-
-
     // TODO : Add commentint
     List<EmployeeBean> employeeSearchByString(int mode, String search) throws Exception {
 
@@ -179,10 +152,13 @@ class EmployeeDAO {
 
         preparedStatement.setDate(8, employeeBean.getEmpDate());
 
-        preparedStatement.executeUpdate();
-
-        ConnectionManager.invalidate();
-
+        try {
+            preparedStatement.executeUpdate();
+        } catch(Exception e) {
+            throw new Exception();
+        } finally {
+            ConnectionManager.invalidate();
+        }
     }
 
     // TODO : Create QUERY sentence to delete the selected record.

@@ -67,17 +67,27 @@ public class RecordInsertingServlet extends HttpServlet {
 
 			employeeBean.setFKana(request.getParameter("f_kana_name"));
 
-			employeeBean.setSex(Byte.parseByte(request.getParameter("sex")));
+			try {
+                employeeBean.setSex(Byte.parseByte(request.getParameter("sex")));
+            } catch(Exception e) {
 
-			Date BirthDate = Date.valueOf(request.getParameter("birthday"));
+            }
 
-			employeeBean.setBirth(BirthDate);
+			try {
+                Date birthDate = Date.valueOf(request.getParameter("birthday"));
+                employeeBean.setBirth(birthDate);
+            } catch(Exception e) {
+			    employeeBean.setBirth(null);
+            }
 
 			employeeBean.setSectionCode(request.getParameter("section_code"));
 
-			Date EmpDate = Date.valueOf (request.getParameter("emp_join"));
-
-			employeeBean.setEmpDate(EmpDate);
+			try {
+                Date empDate = Date.valueOf (request.getParameter("emp_join"));
+                employeeBean.setEmpDate(empDate);
+            } catch(Exception e) {
+			    employeeBean.setEmpDate(null);
+            }
 
 			DAOManager daoManager = new DAOManager();
 

@@ -1,7 +1,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -28,8 +28,8 @@
 		<table>
 			<tr>
 				<td>Name:</td>
-				<td><input type="text" width="50" name="l_name"></td>
-				<td><input type="text" width="50" name="f_name"></td>
+				<td><input type="text" width="50" name="l_name" required></td>
+				<td><input type="text" width="50" name="f_name" required></td>
 			</tr>
 
 			<tr>
@@ -39,7 +39,7 @@
 			</tr>
 			<tr>
 				<td>SEX:</td>
-				<td><input type="radio" name="sex" value="0">男性</td>
+				<td><input type="radio" name="sex" value="0" checked>男性</td>
 				<td><input type="radio" name="sex" value="1">女性</td>
 			</tr>
 			<tr>
@@ -75,7 +75,7 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="submit" name="button" value="backToMenuPage">
+					<input type="button" value="backToMenuPage" onclick="location.href='/menu'">
 					<input type="submit" name="button" value="registration">
 					<input type="reset"  name="button" value="clear">
 				</td>
