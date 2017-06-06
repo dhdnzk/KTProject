@@ -25,7 +25,7 @@ public class RecordDeletionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 						  HttpServletResponse response) throws ServletException, IOException {
 
-		DAOManager daoManager = new DAOManager();
+		DAOManager daoManager = DAOManager.DAO_MANAGER;
 
 		RequestDispatcher rd = null;
 

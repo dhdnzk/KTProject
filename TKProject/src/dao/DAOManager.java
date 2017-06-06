@@ -12,7 +12,9 @@ import java.util.List;
  * @author NekoToken
  * @version 1.0.0
  */
-public class DAOManager {
+public enum DAOManager {
+
+    DAO_MANAGER;
 
     /**
      *

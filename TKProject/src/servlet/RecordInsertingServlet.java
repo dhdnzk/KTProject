@@ -89,7 +89,7 @@ public class RecordInsertingServlet extends HttpServlet {
 			    employeeBean.setEmpDate(null);
             }
 
-			DAOManager daoManager = new DAOManager();
+			DAOManager daoManager = DAOManager.DAO_MANAGER;
 
 			daoManager.addEmployees(employeeBean);
 
@@ -118,7 +118,7 @@ public class RecordInsertingServlet extends HttpServlet {
 	private void toRegistrationPage(HttpServletRequest request,	HttpServletResponse
 			response) throws ServletException, IOException  {
 
-		DAOManager daoManager = new DAOManager();
+		DAOManager daoManager = DAOManager.DAO_MANAGER;
 
 		ArrayList<String> departmentCodeList = null;
 

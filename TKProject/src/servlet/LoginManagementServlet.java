@@ -60,7 +60,7 @@ public class LoginManagementServlet extends HttpServlet {
 
             String password = request.getParameter("password");
 
-            DAOManager daoManager = new DAOManager();
+            DAOManager daoManager = DAOManager.DAO_MANAGER;
 
             daoManager.tryLogin(id, password);
 
