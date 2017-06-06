@@ -47,40 +47,22 @@
 				<td>
 					<input type="date" name="birthday" />
 				</td>
-				<%--<td>
-					<select name ="birth_year">
-						<%for(int i = 1950; i < 2018; i++) {%>
-						<option value="<%= i %>"><%= i %></option>
-						<%} %>
-					</select>
-					年
-				</td>
-				<td>
-					<select name ="birth_month">
-						<%for(int i = 1; i < 13; i++) {%>
-						<option value="<%= i %>"><%= i %></option>
-						<%} %>
-					</select>
-					月
-				</td>
-				<td>
-					<select name ="birth_day">
-						<%for(int i = 1; i < 31; i++) {%>
-						<option value="<%= i %>"><%= i %></option>
-						<%} %>
-					</select>
-					日
-				</td>--%>
 			</tr>
 			<tr>
 				<td>所属部署:</td>
 				<td>
 					<select type="select" name="section_code">
 						<%
-							ArrayList<String[]> departmentList =
-									(ArrayList<String[]>) request.getSession().getAttribute("departmentList");
-							for (int i = 0; i < departmentList.size(); i++) {%>
-						<option value="<%= departmentList.get(i)[0] %>"><%= departmentList.get(i)[1] %></option>
+							ArrayList<String> departmentNameList =
+									(ArrayList<String>)
+											request.getSession().getAttribute("departmentNameList");
+
+							ArrayList<String> departmentCodeList =
+									(ArrayList<String>)
+											request.getSession().getAttribute("departmentCodeList");
+							for (int i = 0; i < departmentNameList.size(); i++) {%>
+						<option value="<%= departmentCodeList.get(i)%>">
+							<%=departmentNameList.get(i)%></option>
 						<%}	%>
 					</select>
 				</td>
@@ -90,33 +72,6 @@
 				<td>
 					<input type="date" name="emp_join" />
 				</td>
-				<%--<td>
-					<select name ="emp_year">
-						<%for(int i = 1950; i < 2018; i++) {%>
-						<option value="<%= i %>"><%= i %>
-						</option>
-						<%} %>
-					</select>
-					年
-				</td>
-				<td>
-					<select name ="emp_month">
-						<%for(int i = 1; i < 13; i++) {%>
-						<option value="<%= i %>"><%= i %>
-						</option>
-						<%} %>
-					</select>
-					月
-				</td>
-				<td>
-					<select name ="emp_day">
-						<%for(int i = 1; i < 31; i++) {%>
-						<option value="<%= i %>"><%= i %>
-						</option>
-						<%} %>
-					</select>
-					日
-				</td>--%>
 			</tr>
 			<tr>
 				<td>
