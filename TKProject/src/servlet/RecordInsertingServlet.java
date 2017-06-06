@@ -61,20 +61,41 @@ public class RecordInsertingServlet extends HttpServlet {
 
 			employeeBean.setLName(request.getParameter("l_name"));
 			employeeBean.setFName(request.getParameter("f_name"));
+
+			if(request.getParameter("l_kana_name").equals("")) {
+			    System.out.println(";;");
+            }
 			employeeBean.setLKana(request.getParameter("l_kana_name"));
 			employeeBean.setFKana(request.getParameter("f_kana_name"));
-			employeeBean.setSex(Byte.parseByte(request.getParameter("sex")));
 
-			Date BirthDate = Date.valueOf(request.getParameter("birthday"));
-			employeeBean.setBirth(BirthDate);
+			try {
+                employeeBean.setSex(Byte.parseByte(request.getParameter("sex")));
+            } catch(Exception e) {
+
+            }
+
+			try {
+                Date birthDate = Date.valueOf(request.getParameter("birthday"));
+                employeeBean.setBirth(birthDate);
+            } catch(Exception e) {
+			    employeeBean.setBirth(null);
+            }
+
 			employeeBean.setSectionCode(request.getParameter("section_code"));
 
-			Date EmpDate = Date.valueOf (request.getParameter("emp_join"));
-			employeeBean.setEmpDate(EmpDate);
+			try {
+                Date empDate = Date.valueOf (request.getParameter("emp_join"));
+                employeeBean.setEmpDate(empDate);
+            } catch(Exception e) {
+			    employeeBean.setEmpDate(null);
+            }
+
 
 			DAOManager daoManager = new DAOManager();
 
 			daoManager.addEmployees(employeeBean);
+
+			System.out.println("success");
 
 			new NoticeGenerator(request,
 								"insert success : " + employeeBean.getLName(),

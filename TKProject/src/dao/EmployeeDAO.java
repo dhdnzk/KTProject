@@ -179,10 +179,13 @@ class EmployeeDAO {
 
         preparedStatement.setDate(8, employeeBean.getEmpDate());
 
-        preparedStatement.executeUpdate();
-
-        ConnectionManager.invalidate();
-
+        try {
+            preparedStatement.executeUpdate();
+        } catch(Exception e) {
+            throw new Exception();
+        } finally {
+            ConnectionManager.invalidate();
+        }
     }
 
     // TODO : Create QUERY sentence to delete the selected record.
