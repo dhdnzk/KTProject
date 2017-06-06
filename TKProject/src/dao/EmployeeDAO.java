@@ -42,45 +42,12 @@ enum  EmployeeDAO {
 
         sql += " LIKE '%" + search + "%'";
 
-        ResultSet resultSet = ConnectionManager.getInstance()
-                .getConnectionStatement().executeQuery(sql);
+        ResultSet resultSet = ConnectionManager.getInstance().getConnectionStatement().executeQuery(sql);
 
-        ArrayList<EmployeeBean> employeeBeanArrayList = new ArrayList<EmployeeBean>();
-
-        while(resultSet.next()){
-
-            EmployeeBean employeeBean = new EmployeeBean();
-
-            employeeBean.setEmpCode(resultSet.getString("emp_code"));
-
-            employeeBean.setLName(resultSet.getString("l_name"));
-
-            employeeBean.setFName(resultSet.getString("f_name"));
-
-            employeeBean.setLKana(resultSet.getString("l_kana_name"));
-
-            employeeBean.setFKana(resultSet.getString("f_kana_name"));
-
-            employeeBean.setSex(resultSet.getByte("sex"));
-
-            employeeBean.setBirth(resultSet.getDate("birth_day"));
-
-            employeeBean.setSectionCode(resultSet.getString("section_code"));
-
-            employeeBean.setEmpDate(resultSet.getDate("emp_date"));
-
-            employeeBean.setUpdateDate(resultSet.getTimestamp("update_date"));
-
-            employeeBeanArrayList.add(employeeBean);
-
-        }
+        ArrayList<EmployeeBean> employeeBeanArrayList = fromResultSetToArrayList(resultSet);
 
         ConnectionManager.invalidate();
 
-        System.out.println(employeeBeanArrayList.size());
-        for(EmployeeBean bean : employeeBeanArrayList) {
-            System.out.println(bean.toString());
-        }
         return employeeBeanArrayList;
 
     }
@@ -94,35 +61,7 @@ enum  EmployeeDAO {
         ResultSet resultSet = ConnectionManager.getInstance()
                 .getConnectionStatement().executeQuery(sql);
 
-        ArrayList<EmployeeBean> employeeBeanArrayList = new ArrayList<>();
-
-        while(resultSet.next()){
-
-            EmployeeBean employeeBean = new EmployeeBean();
-
-            employeeBean.setEmpCode(resultSet.getString("emp_code"));
-
-            employeeBean.setLName(resultSet.getString("l_name"));
-
-            employeeBean.setFName(resultSet.getString("f_name"));
-
-            employeeBean.setLKana(resultSet.getString("l_kana_name"));
-
-            employeeBean.setFKana(resultSet.getString("f_kana_name"));
-
-            employeeBean.setSex(resultSet.getByte("sex"));
-
-            employeeBean.setBirth(resultSet.getDate("birth_day"));
-
-            employeeBean.setSectionCode(resultSet.getString("section_code"));
-
-            employeeBean.setEmpDate(resultSet.getDate("emp_date"));
-
-            employeeBean.setUpdateDate(resultSet.getTimestamp("update_date"));
-
-            employeeBeanArrayList.add(employeeBean);
-
-        }
+        ArrayList<EmployeeBean> employeeBeanArrayList = fromResultSetToArrayList(resultSet);
 
         ConnectionManager.invalidate();
 
@@ -267,4 +206,39 @@ enum  EmployeeDAO {
 
     }
 
+    private ArrayList<EmployeeBean> fromResultSetToArrayList(ResultSet resultSet) throws SQLException {
+
+        ArrayList<EmployeeBean> employeeBeanArrayList = new ArrayList<>();
+
+        while(resultSet.next()){
+
+            EmployeeBean employeeBean = new EmployeeBean();
+
+            employeeBean.setEmpCode(resultSet.getString("emp_code"));
+
+            employeeBean.setLName(resultSet.getString("l_name"));
+
+            employeeBean.setFName(resultSet.getString("f_name"));
+
+            employeeBean.setLKana(resultSet.getString("l_kana_name"));
+
+            employeeBean.setFKana(resultSet.getString("f_kana_name"));
+
+            employeeBean.setSex(resultSet.getByte("sex"));
+
+            employeeBean.setBirth(resultSet.getDate("birth_day"));
+
+            employeeBean.setSectionCode(resultSet.getString("section_code"));
+
+            employeeBean.setEmpDate(resultSet.getDate("emp_date"));
+
+            employeeBean.setUpdateDate(resultSet.getTimestamp("update_date"));
+
+            employeeBeanArrayList.add(employeeBean);
+
+        }
+
+        return employeeBeanArrayList;
+
+    }
 }
