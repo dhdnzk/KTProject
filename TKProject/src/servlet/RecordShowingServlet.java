@@ -61,7 +61,7 @@ public class RecordShowingServlet extends HttpServlet {
 					break;
 			}
 
-			DAOManager dao = new DAOManager();
+			DAOManager dao = DAOManager.DAO_MANAGER;
 			try {
 
 				request.setAttribute("employeeList", dao.searchEmployee(mode, request.getParameter("search")));
@@ -90,11 +90,9 @@ public class RecordShowingServlet extends HttpServlet {
 	private void showAllEmployees(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
-
 		String nextPageUrl;
 
-		DAOManager daoManager = new DAOManager();
+		DAOManager daoManager = DAOManager.DAO_MANAGER;
 
 		try {
 
