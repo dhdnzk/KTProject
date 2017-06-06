@@ -31,60 +31,58 @@ public class RecordShowingServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-			if (request.getParameter("search_mode") == null) {
+		if (request.getParameter("search_mode").isEmpty()) {
+			showAllEmployees(request, response);
+		} else {
 
-				showAllEmployees(request, response);
+			int mode;
 
-			} else {
+			String url;
 
-				int mode;
+			switch(request.getParameter("search_mode")) {
+				case "code" :
+					mode = SearchEmployee.SEARCH_CODE;
+					break;
 
-				String url;
+				case "name" :
+					mode = SearchEmployee.SEARCH_KANJI;
+					break;
 
-				switch(request.getParameter("search_mode")) {
-					case "code" :
-						mode = SearchEmployee.SEARCH_CODE;
-						break;
+				case "hurigana" :
+					mode = SearchEmployee.SEARCH_NAME;
+					break;
 
-					case "name" :
-						mode = SearchEmployee.SEARCH_KANJI;
-						break;
+				case "section" :
+					mode = SearchEmployee.SEARCH_SECTION;
+					break;
 
-					case "hurigana" :
-						mode = SearchEmployee.SEARCH_NAME;
-						break;
+				default :
+					mode = SearchEmployee.SEARCH_DEFAULT;
+					break;
+			}
 
-					case "section" :
-						mode = SearchEmployee.SEARCH_SECTION;
-						break;
+			DAOManager dao = new DAOManager();
+			try {
 
-					default :
-						mode = SearchEmployee.SEARCH_DEFAULT;
-						break;
-				}
+				request.setAttribute("employeeList", dao.searchEmployee(mode, request.getParameter("search")));
 
-				DAOManager dao = new DAOManager();
-				try {
+				url = "emp_list.jsp";
 
-					request.setAttribute("list", dao.searchEmployee(mode, request.getParameter("search")));
+			} catch (Exception e) {
 
-					url = "emp_list.jsp";
+				new NoticeGenerator(request,
+						"search failed",
+						"/recordShowingServlet",
+						"return");
 
-				} catch (Exception e) {
+				url = "error.jsp";
 
-					new NoticeGenerator(request,
-										"search failed",
-										"/recordShowingServlet",
-										"return");
-
-					url = "error.jsp";
-
-
-				}
-
-				request.getRequestDispatcher(Path.BASE_VIEW + url).forward(request, response);
 
 			}
+
+			request.getRequestDispatcher(Path.BASE_VIEW + url).forward(request, response);
+
+		}
 
 	}
 
@@ -100,17 +98,17 @@ public class RecordShowingServlet extends HttpServlet {
 
 		try {
 
-			session.setAttribute("employeeList", daoManager.getAllEmployees());
-			session.setAttribute("departmentNameList", daoManager.getAllSectionNames());
+			request.setAttribute("employeeList", daoManager.getAllEmployees());
+			request.setAttribute("departmentNameList", daoManager.getAllSectionNames());
 
 			nextPageUrl = "emp_list.jsp";
 
 		} catch (Exception e) {
 
 			new NoticeGenerator(request,
-								"can't get data from DB",
-								"/menu",
-								"return");
+					"can't get data from DB",
+					"/menu",
+					"return");
 
 			nextPageUrl =  "error.jsp";
 
