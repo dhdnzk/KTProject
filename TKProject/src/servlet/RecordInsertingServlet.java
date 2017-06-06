@@ -21,13 +21,20 @@ import java.util.ArrayList;
 		{"/recordInsertingServlet"})
 public class RecordInsertingServlet extends HttpServlet {
 
+    // TODO : Add comment
+    protected void doGet(HttpServletRequest request, HttpServletResponse
+            response) throws ServletException, IOException  {
+
+        toRegistrationPage(request, response);
+    }
+
 	// TODO : Add comment
 	protected void doPost(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException  {
 
 		String logic = request.getParameter("button");
 
-		if ( logic.equals("toRegistrationPage") ) {
+		if ( logic.equals("toRegistrationPage") || logic.equals("return")) {
 
 			toRegistrationPage(request, response);
 
@@ -71,7 +78,7 @@ public class RecordInsertingServlet extends HttpServlet {
 
 			new NoticeGenerator(request,
 								"insert success : " + employeeBean.getLName(),
-								"/recordShowingServlet",
+								"/recordInsertingServlet",
 								"return");
 
 			request.getRequestDispatcher(Path.BASE_VIEW + "success.jsp").forward(request, response);
@@ -111,7 +118,7 @@ public class RecordInsertingServlet extends HttpServlet {
 		request.getSession().setAttribute("departmentList", departmentList );
 
 		request.getRequestDispatcher(Path.BASE_VIEW + "registration.jsp").forward(request, response);
-
+        System.out.println("finished");
 	}
 
 	private void backToMenuPage(HttpServletRequest request, HttpServletResponse
