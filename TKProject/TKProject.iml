@@ -35,5 +35,6 @@
     <orderEntry type="library" name="KTProject" level="project" />
     <orderEntry type="library" name="KTProject" level="project" />
     <orderEntry type="library" name="poi-3" level="project" />
+    <orderEntry type="library" name="pdfbox" level="project" />
   </component>
 </module>
