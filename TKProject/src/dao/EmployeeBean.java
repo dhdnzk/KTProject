@@ -32,6 +32,8 @@ public class EmployeeBean {
 
     private Timestamp updateDate;
 
+    private String sectionName;
+
     public void setSex(byte sex) {
         this.sex = sex;
     }
@@ -72,6 +74,8 @@ public class EmployeeBean {
         this.updateDate = updateDate;
     }
 
+    public void setSectionName(String sectionName) { this.sectionName = sectionName; }
+
     public byte getSex() {
         return sex;
     }
@@ -111,6 +115,8 @@ public class EmployeeBean {
     public Timestamp getUpdateDate() {
         return updateDate;
     }
+
+    public String getSectionName() { return sectionName; }
 
     @Override
     public String toString() {

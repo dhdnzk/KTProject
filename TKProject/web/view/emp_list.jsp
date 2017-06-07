@@ -121,7 +121,7 @@
                         <td><%if(aList.getBirth() != null) {out.print(aList.getBirth());}%></td>
                         <td><%try {
                                 out.print(departmentNameList.get(Integer.parseInt(aList.getSectionCode()) - 1));
-                                    } catch(Exception e) {}%>
+                                    } catch(Exception e) { out.print(aList.getSectionName());}%>
                         </td>
                     </tr>
                         <%}%>

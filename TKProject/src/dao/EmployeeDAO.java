@@ -234,6 +234,10 @@ enum  EmployeeDAO {
 
             employeeBeanArrayList.add(employeeBean);
 
+            try {
+                employeeBean.setSectionName(resultSet.getString("section_name"));
+            } catch(Exception e) {}
+
         }
 
         return employeeBeanArrayList;
