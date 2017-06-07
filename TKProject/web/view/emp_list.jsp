@@ -140,12 +140,9 @@
         <input type="button" id="deleteCancel" value="clear">
 
         <form action = "menu" method = "POST">
-<<<<<<< HEAD
             <input type = "submit" id="backToMainPage" value = "back to main page"></form>
-=======
             <input type = "submit" value = "back to main page"></form>
         <input type="button" value="get PDF" onclick="location.href='/getPDF'" />
->>>>>>> 67c4edecde5a10e11b65598d5ebf0272c2b32db9
     </div>
 </div>
 
