@@ -52,7 +52,6 @@ enum  EmployeeDAO {
 
     }
 
-
     // TODO : Add comment
     ArrayList<EmployeeBean> getAllEmployees() throws Exception {
 
@@ -162,7 +161,6 @@ enum  EmployeeDAO {
         return sectionList;
 
     }
-
 
     public ArrayList<String> getAllSectionCodes() throws Exception {
 
