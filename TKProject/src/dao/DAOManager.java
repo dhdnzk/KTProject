@@ -20,7 +20,7 @@ public enum DAOManager {
      *
      * tryLogin
      * When failed login, exception is thrown to this method from
-     * UserDAO.tryLogin method. by throwing the exception again to the servlet,
+     * UserDAO.tryLogin method. by throwing the exception again to the AddEmployeeByExcelFile,
      * it predicate login failed and execute next process.
      *
      * @param id : get user id from user input on web.
