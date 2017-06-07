@@ -121,13 +121,10 @@
                         <td><%=(aList.getSex() == 0 ? "男" : "女")%></td>
                         <td><%if(aList.getBirth() != null) {out.print(aList.getBirth());}%></td>
                         <td><%try {
-<<<<<<< HEAD
                             out.print(departmentNameList.get(Integer.parseInt(aList.getSectionCode()) - 1));
                         } catch(Exception e) {}%>
-=======
                                 out.print(departmentNameList.get(Integer.parseInt(aList.getSectionCode()) - 1));
                                     } catch(Exception e) { out.print(aList.getSectionName());}%>
->>>>>>> 67c4edecde5a10e11b65598d5ebf0272c2b32db9
                         </td>
                     </tr>
                         <%}%>
