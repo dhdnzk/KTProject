@@ -5,8 +5,8 @@
 <!DOCTYPE html PUBLIC>
 <html>
 <head>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
     <title></title>
-
     <style type="text/css">
 
         .main_container {
@@ -74,7 +74,7 @@
 </head>
 <body>
 <div class="main_container">
-    <form action="/recordShowingServlet" method="post">
+    <form action="recordShowingServlet" method="post">
         <select name="search_mode">
             <option value="code">従業員コード</option>
             <option value="name">氏名</option>
@@ -100,7 +100,7 @@
         <div class="table-wrapper">
             <table>
                 <tr>
-                    <th>Employee list</th>
+                    <th class="deletionCheckbox"></th>
                     <th>ID</th>
                     <th>name</th>
                     <th>kana</th>
@@ -111,8 +111,9 @@
                 <form action = "recordDeletionServlet" method = "POST">
                         <%for(EmployeeBean aList: employeeList){%>
                     <tr>
-                        <td><input type="checkbox" name="code"
-                                   value="<%=aList.getEmpCode()%>"></td>
+                        <td class="deletionCheckbox"><input type="checkbox"
+                                                            name="code"
+                                                            value="<%=aList.getEmpCode()%>"></td>
                         <td><%=aList.getEmpCode() %></td>
                         <td><%=aList.getLName() + aList.getFName()%></td>
                         <td><%if(aList.getLKana() != null) {out.print(aList.getLKana());}
@@ -120,8 +121,8 @@
                         <td><%=(aList.getSex() == 0 ? "男" : "女")%></td>
                         <td><%if(aList.getBirth() != null) {out.print(aList.getBirth());}%></td>
                         <td><%try {
-                                out.print(departmentNameList.get(Integer.parseInt(aList.getSectionCode()) - 1));
-                                    } catch(Exception e) {}%>
+                            out.print(departmentNameList.get(Integer.parseInt(aList.getSectionCode()) - 1));
+                        } catch(Exception e) {}%>
                         </td>
                     </tr>
                         <%}%>
@@ -130,12 +131,48 @@
     </div>
 
     <div class = "sub1">
-        <input type = submit value = "delete">
+        <input type = submit id="executeDelete" value = "delete">
         </form>
 
+        <input type="button" id="showDeleteOption" value="delete">
+        <input type="button" id="deleteCancel" value="clear">
+
         <form action = "menu" method = "POST">
-            <input type = "submit" value = "back to main page"></form>
+            <input type = "submit" id="backToMainPage" value = "back to main page"></form>
     </div>
 </div>
+
+<script>
+
+    $(document).ready(function() {
+
+        $('.deletionCheckbox').hide();
+        $('#executeDelete').hide();
+        $('#deleteCancel').hide();
+
+        $('#showDeletionOption').click(function() {
+
+            console.log("#showDeletionOption button is clicked");
+            $('.deletionCheckbox').show();
+            $('#executeDelete').show();
+            $('#deleteCancel').show();
+            $('#showDeleteOption').hide();
+
+        }),
+
+        $('#deleteCancel').click(function() {
+
+            console.log("#deleteCancel button is clicked");
+            $('.deletionCheckbox').hide();
+            $('#executeDelete').hide();
+            $('#deleteCancel').hide();
+            $('#showDeleteOption').show();
+
+        });
+
+    })
+
+</script>
+
 </body>
 </html>
