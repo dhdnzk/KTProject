@@ -11,7 +11,7 @@ import java.io.IOException;
 
 /**
  * Created by bumskim on 2017. 6. 5..
- * servlet for going login page
+ * AddEmployeeByExcelFile for going login page
  */
 @WebServlet(name = "LoginPageServlet", urlPatterns = "/")
 public class LoginPageServlet extends HttpServlet {

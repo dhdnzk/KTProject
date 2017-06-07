@@ -1,4 +1,4 @@
-package servlet.servlet.noticeSupport;
+package servlet.noticeSupport;
 
 import javax.servlet.http.HttpServletRequest;
 

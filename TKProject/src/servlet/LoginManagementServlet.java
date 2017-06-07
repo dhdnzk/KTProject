@@ -2,7 +2,7 @@ package servlet;
 
 import dao.DAOManager;
 import filePath.Path;
-import servlet.servlet.noticeSupport.NoticeGenerator;
+import servlet.noticeSupport.NoticeGenerator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

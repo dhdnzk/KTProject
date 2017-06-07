@@ -2,7 +2,7 @@ package servlet;
 
 import dao.DAOManager;
 import filePath.Path;
-import servlet.servlet.noticeSupport.NoticeGenerator;
+import servlet.noticeSupport.NoticeGenerator;
 import dao.support.SearchEmployee;
 
 import javax.servlet.ServletException;
@@ -10,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 //TODO : Refactoring Class RecordShowingServlet
