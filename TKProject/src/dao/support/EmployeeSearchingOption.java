@@ -1,8 +1,5 @@
 package dao.support;
 
-/**
- * Created by bumskim on 2017. 6. 5..
- */
 public class EmployeeSearchingOption {
 
     static final public int SEARCH_BY_DEFAULT = 0;

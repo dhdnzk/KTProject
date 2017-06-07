@@ -33,19 +33,26 @@ public class RecordInsertingServlet extends HttpServlet {
 
 		String logic = request.getParameter("button");
 
-		if ( logic.equals("toRegistrationPage") || logic.equals("return")) {
+		switch (logic) {
 
-			toRegistrationPage(request, response);
+			case "toRegistrationPage":
+			case "return":
 
-		}
-		else if (logic.equals("registration") ) {
+				toRegistrationPage(request, response);
 
-			registration(request, response);
+				break;
 
-		}
-		else if (logic.equals("backToMenuPage")) {
+			case "registration":
 
-			backToMenuPage(request, response);
+				registration(request, response);
+
+				break;
+
+			case "backToMenuPage":
+
+				backToMenuPage(request, response);
+
+				break;
 
 		}
 
@@ -56,6 +63,7 @@ public class RecordInsertingServlet extends HttpServlet {
 			response) throws ServletException, IOException  {
 
 		try{
+
 			EmployeeBean employeeBean = new EmployeeBean();
 
 			employeeBean.setLName(request.getParameter("l_name"));
@@ -67,25 +75,38 @@ public class RecordInsertingServlet extends HttpServlet {
 			employeeBean.setFKana(request.getParameter("f_kana_name"));
 
 			try {
+
                 employeeBean.setSex(Byte.parseByte(request.getParameter("sex")));
+
             } catch(Exception e) {
 
+				employeeBean.setSex((byte)0);
             }
 
 			try {
+
                 Date birthDate = Date.valueOf(request.getParameter("birthday"));
+
                 employeeBean.setBirth(birthDate);
+
             } catch(Exception e) {
+
 			    employeeBean.setBirth(null);
+
             }
 
 			employeeBean.setSectionCode(request.getParameter("section_code"));
 
 			try {
+
                 Date empDate = Date.valueOf (request.getParameter("emp_join"));
+
                 employeeBean.setEmpDate(empDate);
+
             } catch(Exception e) {
+
 			    employeeBean.setEmpDate(null);
+
             }
 
 			DAOManager daoManager = DAOManager.DAO_MANAGER;

@@ -1,13 +1,10 @@
 package dao;
 
 import exception.DeleteFailedException;
-
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
-
 import ConnectionManager.*;
-import dao.support.SearchEmployee;
+import dao.support.EmployeeSearchingOption;
 
 // TODO : Add comment
 enum  EmployeeDAO {
@@ -20,24 +17,35 @@ enum  EmployeeDAO {
         String sql = "SELECT * FROM m_employee JOIN m_section ON m_employee.section_code = m_section.section_code WHERE ";
 
         switch(mode) {
-            case SearchEmployee.SEARCH_CODE:
+
+            case EmployeeSearchingOption.SEARCH_BY_CODE:
+
                 sql += "emp_code";
+
                 break;
 
-            case SearchEmployee.SEARCH_KANJI:
+            case EmployeeSearchingOption.SEARCH_BY_NAME:
+
                 sql += "CONCAT(l_name, f_name)";
+
                 break;
 
-            case SearchEmployee.SEARCH_NAME:
+            case EmployeeSearchingOption.SEARCH_BY_KANA:
+
                 sql += "CONCAT(l_kana_name, f_kana_name)";
+
                 break;
 
-            case SearchEmployee.SEARCH_SECTION:
+            case EmployeeSearchingOption.SEARCH_BY_SECTION:
+
                 sql += "section_name";
+
                 break;
 
             default:
+
                 throw new Exception();
+
         }
 
         sql += " LIKE '%" + search + "%'";
@@ -96,19 +104,23 @@ enum  EmployeeDAO {
         preparedStatement.setDate(8, employeeBean.getEmpDate());
 
         try {
+
             preparedStatement.executeUpdate();
+
         } catch(Exception e) {
+
             throw new Exception();
+
         } finally {
+
             ConnectionManager.invalidate();
+
         }
+
     }
 
-    // TODO : Create QUERY sentence to delete the selected record.
     // TODO : Add comment
-    // FIXME : what is the meaning of parameter?
-    void deleteEmployees(String[] codeList) throws
-            Exception {
+    void deleteEmployees(String[] codeList) throws Exception {
 
         String sql = "DELETE FROM m_employee WHERE emp_code = ?";
 
@@ -153,11 +165,15 @@ enum  EmployeeDAO {
         ArrayList<String[]> sectionList = new ArrayList<String[]>();
 
         while(resultSet.next()) {
+
             String[] str = {resultSet.getString("section_code"), resultSet.getString("section_name")};
+
             sectionList.add(str);
+
         }
 
         ConnectionManager.invalidate();
+
         return sectionList;
 
     }
@@ -235,7 +251,9 @@ enum  EmployeeDAO {
             employeeBeanArrayList.add(employeeBean);
 
             try {
+
                 employeeBean.setSectionName(resultSet.getString("section_name"));
+
             } catch(Exception e) {}
 
         }
@@ -243,4 +261,5 @@ enum  EmployeeDAO {
         return employeeBeanArrayList;
 
     }
+
 }

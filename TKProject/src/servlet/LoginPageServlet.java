@@ -17,10 +17,15 @@ import java.io.IOException;
 public class LoginPageServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         request.getRequestDispatcher(Path.BASE_VIEW + "login.jsp").forward(request, response);
+
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         doGet(request, response);
+
     }
+
 }

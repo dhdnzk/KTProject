@@ -5,6 +5,7 @@ package filePath;
  * set root directories for request dispatch
  */
 public class Path {
+
     static public final String BASE_VIEW = "/view/";
 
 }

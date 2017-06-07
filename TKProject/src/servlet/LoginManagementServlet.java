@@ -3,7 +3,6 @@ package servlet;
 import dao.DAOManager;
 import filePath.Path;
 import servlet.noticeSupport.NoticeGenerator;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

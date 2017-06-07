@@ -1,7 +1,6 @@
 package dao;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -44,6 +43,7 @@ public enum DAOManager {
 
     }
 
+    // TODO : add comment
     public ArrayList<String> getAllSectionCodes() throws Exception {
 
         EmployeeDAO employeeDAO = EmployeeDAO.EMPLOYEE_DAO;
@@ -52,6 +52,7 @@ public enum DAOManager {
 
     }
 
+    // TODO : add comment
     public ArrayList<String> getAllSectionNames() throws Exception {
 
         EmployeeDAO employeeDAO = EmployeeDAO.EMPLOYEE_DAO;
@@ -60,6 +61,7 @@ public enum DAOManager {
 
     }
 
+    // TODO : add comment
     public ArrayList<ArrayList<String>> getAllSectionInfo() throws Exception {
 
         ArrayList<ArrayList<String>> allSectionInfo = new ArrayList<>();

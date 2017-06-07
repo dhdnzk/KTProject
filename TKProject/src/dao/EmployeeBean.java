@@ -7,9 +7,8 @@ import java.sql.Timestamp;
  * EmployeeBean
  *
  * @author NekoToken
- * @version 1.0.0
+ * @version 1.1.0
  */
-// TODO : AddComment
 public class EmployeeBean {
 
     private byte sex;
@@ -132,5 +131,7 @@ public class EmployeeBean {
                 ", empDate=" + empDate +
                 ", updateDate=" + updateDate +
                 '}';
+
     }
+
 }

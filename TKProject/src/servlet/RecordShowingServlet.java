@@ -1,9 +1,9 @@
 package servlet;
 
 import dao.DAOManager;
+import dao.support.EmployeeSearchingOption;
 import filePath.Path;
 import servlet.noticeSupport.NoticeGenerator;
-import dao.support.SearchEmployee;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,23 +40,23 @@ public class RecordShowingServlet extends HttpServlet {
 
 			switch(request.getParameter("search_mode")) {
 				case "code" :
-					mode = SearchEmployee.SEARCH_CODE;
+					mode = EmployeeSearchingOption.SEARCH_BY_CODE;
 					break;
 
 				case "name" :
-					mode = SearchEmployee.SEARCH_KANJI;
+					mode = EmployeeSearchingOption.SEARCH_BY_NAME;
 					break;
 
 				case "hurigana" :
-					mode = SearchEmployee.SEARCH_NAME;
+					mode = EmployeeSearchingOption.SEARCH_BY_KANA;
 					break;
 
 				case "section" :
-					mode = SearchEmployee.SEARCH_SECTION;
+					mode = EmployeeSearchingOption.SEARCH_BY_SECTION;
 					break;
 
 				default :
-					mode = SearchEmployee.SEARCH_DEFAULT;
+					mode = EmployeeSearchingOption.SEARCH_BY_DEFAULT;
 					break;
 			}
 

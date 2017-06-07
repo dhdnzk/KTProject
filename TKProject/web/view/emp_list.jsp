@@ -156,19 +156,15 @@
         $('#showDeletionOption').click(function() {
 
             console.log("#showDeletionOption button is clicked");
-            $('.deletionCheckbox').show();
-            $('#executeDelete').show();
-            $('#deleteCancel').show();
+            $('.deletionCheckbox, #executeDelete, #deleteCancel').show();
             $('#showDeleteOption').hide();
 
-        }),
+        });
 
         $('#deleteCancel').click(function() {
 
             console.log("#deleteCancel button is clicked");
-            $('.deletionCheckbox').hide();
-            $('#executeDelete').hide();
-            $('#deleteCancel').hide();
+            $('.deletionCheckbox, #executeDelete, #deleteCancel').hide();
             $('#showDeleteOption').show();
 
         });
