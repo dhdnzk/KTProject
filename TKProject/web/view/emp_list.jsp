@@ -141,7 +141,6 @@
 
         <form action = "menu" method = "POST">
             <input type = "submit" id="backToMainPage" value = "back to main page"></form>
-            <input type = "submit" value = "back to main page"></form>
         <input type="button" value="get PDF" onclick="location.href='/getPDF'" />
     </div>
 </div>
