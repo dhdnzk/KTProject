@@ -33,3 +33,5 @@ dependency-reduced-pom.xml
 *.idea
 
 README.html
+*/out/
+/out/
