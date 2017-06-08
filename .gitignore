@@ -12,8 +12,8 @@ Thumbs.db
 
 .gradle/
 */.gradle/
-gradle.build
-*/gradle.build
+build.gradle
+*/build.gradle
 build/
 target/
 bin/
