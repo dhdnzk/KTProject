@@ -6,6 +6,8 @@ import filePath.Path;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import servlet.noticeSupport.NoticeGenerator;
 
@@ -18,7 +20,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.nio.file.Paths;
+import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  * Created by bumskim on 2017. 6. 7..
@@ -32,8 +38,6 @@ public class AddEmployeeByExcelFile extends HttpServlet {
         Boolean error = false;
 
         Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
-
-        String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
 
         InputStream fileContent = filePart.getInputStream();
 
@@ -65,6 +69,49 @@ public class AddEmployeeByExcelFile extends HttpServlet {
 
             employee.setFName(row.getCell(1).getStringCellValue());
 
+            employee.setLKana(row.getCell(2).getStringCellValue().equals("") ? null : row.getCell(2).getStringCellValue());
+
+            employee.setFKana(row.getCell(3).getStringCellValue().equals("") ? null : row.getCell(3).getStringCellValue());
+
+            try {
+                employee.setSex(row.getCell(4).getStringCellValue().equals("男") ? (byte)0 : (byte)1);
+            } catch(NullPointerException e) {
+                employee.setSex((byte)0);
+            }
+
+            try {
+                employee.setBirth(new Date(row.getCell(5).getDateCellValue().getTime()));
+            } catch(NullPointerException e) {
+                employee.setBirth(null);
+            }
+
+            try {
+                employee.setSectionName(row.getCell(6).getStringCellValue());
+            } catch(NullPointerException e) {
+                employee.setSectionCode("");
+            }
+
+            try {
+                employee.setEmpDate(new Date(row.getCell(7).getDateCellValue().getTime()));
+            } catch(NullPointerException e) {
+                employee.setEmpDate(null);
+            }
+
+            ArrayList<String[]> list = null;
+            try {
+                list = DAOManager.DAO_MANAGER.getDepartmentListFromMSectionTable();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            for(String[] name : list) {
+                if(employee.getSectionName().equalsIgnoreCase(name[1])) {
+                    employee.setSectionCode(name[0]);
+                    break;
+                }
+            }
+
+
             try {
 
                 DAOManager.DAO_MANAGER.addEmployees(employee);
@@ -95,7 +142,7 @@ public class AddEmployeeByExcelFile extends HttpServlet {
                     "insert failed",
                     "/recordInsertingServlet",
                     "return");
-
+            request.getRequestDispatcher(Path.BASE_VIEW + "error.jsp").forward(request,response);
         } else {
 
             request.setAttribute("link","/recordInsertingServlet");

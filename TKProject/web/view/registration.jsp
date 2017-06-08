@@ -24,7 +24,7 @@
 <body>
 <div class="main_container">
 	<p>registration form!</p>
-	<form action="recordInsertingServlet" method="POST" >
+	<form action="recordInsertingServlet" method="POST">
 		<table>
 			<tr>
 				<td>Name:</td>

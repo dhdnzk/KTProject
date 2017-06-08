@@ -113,6 +113,8 @@ public class RecordInsertingServlet extends HttpServlet {
 
 			daoManager.addEmployees(employeeBean);
 
+			System.out.println(employeeBean.toString());
+
 			new NoticeGenerator(request,
 								"insert success : " + employeeBean.getLName(),
 								"/recordInsertingServlet",
