@@ -185,7 +185,6 @@ public class getEmployeePDFServlet extends HttpServlet {
 
         File file = new File("../webapps/font/NanumGothic.ttf");
 //        File file = new File("font/NanumGothic.ttf");
-        System.out.println(file.getAbsolutePath());
         PDType0Font font = PDType0Font.load(doc, file);
         //PDFont font = PDTrueTypeFont.loadTTF( doc, new File( "/Users/bumskim/Documents/works/KTProject/TKProject/web/font/NanumGothic.ttf" ) );
 
