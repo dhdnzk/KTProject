@@ -20,7 +20,7 @@
 
         .main_container_middle {
 
-            height: 75%;
+            height: 200px;
             width: 100%;
 
         }
@@ -29,8 +29,7 @@
 
             overflow-x: hidden;
             overflow-y: auto;
-            height: 100%;
-
+            height:100%;
         }
 
         table {
@@ -70,20 +69,22 @@
 
         }
 
+        h1 {
+            margin:0 auto;
+        }
+
+        .sub1 {
+            flow:center;
+        }
+
+        form {
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
 <div class="main_container">
-    <form action="recordShowingServlet" method="post">
-        <select name="search_mode">
-            <option value="code">従業員コード</option>
-            <option value="name">氏名</option>
-            <option value="hurigana">フリガナ</option>
-            <option value="section">所属</option>
-        </select>
-        <input type="search" name="search" />
-        <input type="submit" value="検索" />
-    </form>
+
 
     <%
         ArrayList<EmployeeBean> employeeList = (ArrayList<EmployeeBean>)
@@ -95,7 +96,16 @@
     %>
 
     <h1>Employee List</h1>
-
+    <form action="recordShowingServlet" method="post">
+        <select name="search_mode">
+            <option value="code">従業員コード</option>
+            <option value="name">氏名</option>
+            <option value="hurigana">フリガナ</option>
+            <option value="section">所属</option>
+        </select>
+        <input type="search" name="search" />
+        <input type="submit" value="検索" />
+    </form>
     <div class="main_container_middle">
         <div class="table-wrapper">
             <table>
@@ -122,9 +132,7 @@
                         <td><%if(aList.getBirth() != null) {out.print(aList.getBirth());}%></td>
                         <td><%try {
                             out.print(departmentNameList.get(Integer.parseInt(aList.getSectionCode()) - 1));
-                        } catch(Exception e) {
-                                out.print(departmentNameList.get(Integer.parseInt(aList.getSectionCode()) - 1));
-                        }%>
+                        } catch(Exception e) {}%>
                         </td>
                     </tr>
                         <%}%>
@@ -133,7 +141,7 @@
     </div>
 
     <div class = "sub1">
-        <input type = submit id="executeDelete" value = "delete">
+        <input type ="submit" id="executeDelete" value = "delete">
         </form>
 
         <input type="button" id="showDeleteOption" value="delete">

@@ -152,7 +152,7 @@ public class AddEmployeeByExcelFile extends HttpServlet {
             request.getRequestDispatcher(Path.BASE_VIEW + "error.jsp").forward(request,response);
         } else {
 
-            request.setAttribute("link","/recordInsertingServlet");
+            request.setAttribute("link","/menu");
 
             request.setAttribute("message", "seccuss!");
 
