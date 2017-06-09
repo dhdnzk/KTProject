@@ -83,14 +83,5 @@
 		</table>
 	</form>
 </div>
-<div>
-	<h1>test area</h1>
-	<form method="post" action="AddEmployeeByExcelFile"
-		  enctype="multipart/form-data">
-		<input type="file" name="file" />
-        <input type="submit" value="submit" />
-	</form>
-
-</div>
 </body>
 </html>

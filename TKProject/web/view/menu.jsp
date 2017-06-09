@@ -16,27 +16,32 @@
         }
         .container_title {
             font-size: 40px;
-            margin-left: 38%;
-            margin-top: 10%
+            margin: 70px auto 70px auto;
         }
 
         .container_buttons {
 
-            margin-left: 30%;
-            margin-right: 30%;
+            margin: 0 auto;
 
 
         }
 
         .container_button2 {
-            margin-left: 60%;
+            margin: 0 auto;
         }
 
         .container_submit_button {
+            text-align: right;
+            margin: 30px 70px 0 0;
+        }
 
-            margin-top: 8%;
-            margin-left: 67%;
+        td {
+            width: 150px;
+            margin: 0 auto;
+        }
 
+        table {
+            margin: 0 auto;
         }
 
     </style>
@@ -64,6 +69,11 @@
                                    value="showAllList">
                     </form>
                     </div>
+                </td>
+                <td>
+                    <input type="button"
+                           onclick="location.href='/AddEmployeeByExcelFile'"
+                           value="addEmployeeByExcelFile"/>
                 </td>
             </tr>
         </table>

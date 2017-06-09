@@ -33,6 +33,13 @@ import java.util.ArrayList;
 @WebServlet(name = "AddEmployeeByExcelFile", urlPatterns =
         "/AddEmployeeByExcelFile")
 public class AddEmployeeByExcelFile extends HttpServlet {
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        request.getRequestDispatcher(Path.BASE_VIEW + "registrationByExcel.jsp").forward(request, response);
+
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Boolean error = false;
