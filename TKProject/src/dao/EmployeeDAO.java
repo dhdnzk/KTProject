@@ -63,7 +63,7 @@ enum  EmployeeDAO {
     // TODO : Add comment
     ArrayList<EmployeeBean> getAllEmployees() throws Exception {
 
-        String sql = "SELECT * FROM m_employee JOIN m_section ON m_employee.section_code = m_section.section_code";
+        String sql = "SELECT * FROM m_employee JOIN m_section ON m_employee.section_code = m_section.section_code ORDER BY emp_code";
 
         ResultSet resultSet = ConnectionManager.getInstance()
                 .getConnectionStatement().executeQuery(sql);

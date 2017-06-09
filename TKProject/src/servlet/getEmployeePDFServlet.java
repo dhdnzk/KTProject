@@ -6,13 +6,14 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDStream;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.font.PDType0Font;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -126,7 +127,7 @@ public class getEmployeePDFServlet extends HttpServlet {
 
         PDPageContentStream content = new PDPageContentStream(document, page);
 
-        drawTable(page, content, 700, 100, str);
+        drawTable(document, page, content, 700, 100, str);
 
         // must close stream before save file
         content.close();
@@ -142,7 +143,7 @@ public class getEmployeePDFServlet extends HttpServlet {
      * @param content a 2d array containing the table data
      * @throws IOException
      */
-    public static void drawTable(PDPage page, PDPageContentStream contentStream,
+    public static void drawTable(PDDocument doc, PDPage page, PDPageContentStream contentStream,
                                  float y, float margin,
                                  String[][] content) throws IOException {
 
@@ -182,8 +183,14 @@ public class getEmployeePDFServlet extends HttpServlet {
 
         }
 
+        File file = new File("../webapps/font/NanumGothic.ttf");
+//        File file = new File("font/NanumGothic.ttf");
+        System.out.println(file.getAbsolutePath());
+        PDType0Font font = PDType0Font.load(doc, file);
+        //PDFont font = PDTrueTypeFont.loadTTF( doc, new File( "/Users/bumskim/Documents/works/KTProject/TKProject/web/font/NanumGothic.ttf" ) );
+
         //now add the text
-        contentStream.setFont(PDType1Font.HELVETICA_BOLD,12);
+        contentStream.setFont(font,12);
 
         float textx = margin+cellMargin;
 
